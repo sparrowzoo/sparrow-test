@@ -1,0 +1,7 @@
+1,passenger$name,乘客姓名,true,STRING,true,
+1,passenger$sex,性别,true,OPTION,true,^男:0|女:1
+1,passenger$id_card,身份证号（国内用户必填）,true,STRING,false,^(\d{15}|\d{17}[\dx])$
+1,passenger$passport,护照号（国外用户必填）,true,STRING,false,^[a-zA-Z0-9]{5,17}$
+1,passenger$birthday,出生年月日,true,DATE,true
+1,passenger$expiry_date,护照有效期,true,DATE,true
+1,passenger$nationality,国籍,true,OPTION,true

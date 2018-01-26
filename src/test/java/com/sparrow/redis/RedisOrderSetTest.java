@@ -1,0 +1,78 @@
+package com.sparrow.redis;
+
+import com.sparrow.cache.CacheClient;
+import com.sparrow.cache.CacheDataNotFound;
+import com.sparrow.constant.cache.KEY;
+import com.sparrow.container.Container;
+import com.sparrow.container.impl.SparrowContainerImpl;
+import com.sparrow.exception.CacheConnectionException;
+import com.sparrow.support.ModuleSupport;
+
+import java.util.Map;
+import java.util.TreeMap;
+
+/**
+ * Created by harry on 2018/1/26.
+ */
+public class RedisOrderSetTest {
+    public static void main(String[] args) throws CacheConnectionException {
+        Container container = new SparrowContainerImpl("/redis_config.xml");
+        //定义模块，一个业务会存在多个模块
+        ModuleSupport OD = new ModuleSupport() {
+            @Override
+            public String code() {
+                return "01";
+            }
+
+            @Override
+            public String name() {
+                return "OD";
+            }
+        };
+
+
+        //相同模块下会存在多个业务
+        KEY.Business od = new KEY.Business(OD, "POOL");
+        KEY key = new KEY.Builder().business(od).businessId("BJS", "CHI", "HU","ORDER_SET").build();
+
+        container.init();
+        CacheClient client = container.getBean("cacheClient");
+        client.key().delete(key);
+        client.orderSet().add(key, "field",1L);
+
+        client.key().delete(key);
+        System.out.println(client.orderSet().getSize(key));
+
+        Map<String,Double> set = new TreeMap<String, Double>();
+        set.put("k1",1d);
+        set.put("k2",2d);
+        set.put("k3",3d);
+        client.orderSet().putAllWithScore(key, set);
+
+        Map<String,Double> kv=client.orderSet().getAllWithScore(key);
+
+        for (String db : kv.keySet()) {
+            System.out.println(db);
+            System.out.println(kv.get(db));
+        }
+
+        System.out.println(client.orderSet().getSize(key));
+        client.key().delete(key);
+        Map<String,Double> fromdb = client.orderSet().getAllWithScore(key, new CacheDataNotFound<Map<String,Double>>() {
+            @Override
+            public Map<String,Double> read(KEY key) {
+                Map<String,Double> set = new TreeMap<String, Double>();
+                set.put("field",11111d);
+                set.put("field2",2222d);
+                set.put("field3",33333d);
+                return set;
+            }
+        });
+
+        for (String db : fromdb.keySet()) {
+            System.out.println(db);
+            System.out.println(fromdb.get(db));
+        }
+        client.key().delete(key);
+    }
+}
