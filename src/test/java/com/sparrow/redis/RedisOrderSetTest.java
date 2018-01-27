@@ -58,7 +58,7 @@ public class RedisOrderSetTest {
 
         System.out.println(client.orderSet().getSize(key));
         client.key().delete(key);
-        Map<String,Double> fromdb = client.orderSet().getAllWithScore(key, new CacheDataNotFound<Map<String,Double>>() {
+        Map<String,Double> fromdb = client.orderSet().getAllWithScore(key,String.class, new CacheDataNotFound<Map<String,Double>>() {
             @Override
             public Map<String,Double> read(KEY key) {
                 Map<String,Double> set = new TreeMap<String, Double>();

@@ -18,7 +18,7 @@
     <orderEntry type="library" name="Maven: javax.json:javax.json-api:1.0" level="project" />
     <orderEntry type="module" module-name="sparrow-orm" />
     <orderEntry type="module" module-name="sparrow-context" />
-    <orderEntry type="module" module-name="sparrow-facade" />
+    <orderEntry type="module" module-name="sparrow (1)" />
     <orderEntry type="library" name="Maven: org.wltea.ik-analyzer:ik-analyzer:2012_u6" level="project" />
     <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
