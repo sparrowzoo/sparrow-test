@@ -12,6 +12,8 @@ import com.sparrow.support.ModuleSupport;
  * @author by harry
  */
 public class RedisStringTest {
+    private static CacheClient client;
+
     public static void main(String[] args) throws CacheConnectionException {
         Container container = new SparrowContainerImpl("/redis_config.xml");
         //定义模块，一个业务会存在多个模块
@@ -30,7 +32,7 @@ public class RedisStringTest {
         //相同模块下会存在多个业务
         KEY.Business od = new KEY.Business(OD, "POOL");
         container.init();
-        CacheClient client = container.getBean("cacheClient");
+        client = container.getBean("cacheClient");
         //相同业务下存在多个KEY
         KEY key = new KEY.Builder().business(od).businessId("BJS", "CHI", "HU").build();
 
@@ -62,7 +64,6 @@ public class RedisStringTest {
         client.string().setExpire(key, 10, "11111");
         System.out.println(client.string().get(key));
 
-
         client.key().delete(key);
         client.string().setIfNotExist(key, "not exist");
         System.out.println(client.string().get(key));
@@ -70,11 +71,8 @@ public class RedisStringTest {
         System.out.println(client.string().get(key));
 
         client.key().delete(key);
-        client.string().set(key,new RedisEntity(1,"ZHANGSAN"));
+        client.string().set(key, new RedisEntity(1, "ZHANGSAN"));
         System.out.println(client.string().get(key));
-
-
-
 
         KEY k2 = KEY.parse("OD.POOL:BJS.CHI.HU");
         System.out.println("key:" + k2.key() + ",module:" + k2.getModule() + " business:" + k2.getBusiness());

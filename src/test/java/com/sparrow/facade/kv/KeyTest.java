@@ -25,6 +25,7 @@ import com.sparrow.constant.cache.KEY;
  */
 public class KeyTest {
     public static void main(String[] args) {
+        KEY.Business od=new KEY.Business(SPARROW_MODULE.CODE,"OD");
         KEY.Business codeIdNamePair = new KEY.Business(SPARROW_MODULE.CODE, "OD", "NAME", "PAIR");
         KEY.Business userRegister = new KEY.Business(SPARROW_MODULE.USER, "REGISTER");
         KEY.Business user = new KEY.Business(SPARROW_MODULE.USER);
@@ -32,7 +33,7 @@ public class KeyTest {
         KEY codeIdNamePairKey= new KEY.Builder().business(codeIdNamePair).build();
         KEY userRegisterKey=new KEY.Builder().business(userRegister).businessId(1, 2).build();
         KEY userKey=new KEY.Builder().business(userRegister).businessId(1, 2).build();
-
+        KEY odAirline=new KEY.Builder().business(od.append("BJS","CHI","HU")).build();
         System.out.println("key---");
         System.out.println(codeIdNamePairKey.key());
         System.out.println(userRegisterKey.key());
