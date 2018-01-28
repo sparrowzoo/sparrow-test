@@ -34,8 +34,8 @@ public class CompressTest {
         String unzipFile = path + "unzip/sparrow-test.txt";
         Container container = new SparrowContainerImpl("/file_config.xml");
         container.init();
-        CompressUtility.unzip(path + "/unzip/Q555.PROD.S01FTTC.D160926.T2000.zip");
-        CompressUtility.unzip(path + "/unzip/Q555.PROD.S01FTTC.D160926.T2000.zip",unzipFile);
+        CompressUtility.unzip(path + "/unzip/computer.zip");
+        CompressUtility.unzip(path + "/unzip/computer.zip",unzipFile);
     }
 
 
