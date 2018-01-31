@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mvc PUBLIC "-//sparrow Framework//DTD mvc Configuration//EN"
+        "http://www.sparrowzoo.com/dtds/mvc.dtd">
+<mvc>
+    <!--在bean context中定义-->
+    <class name="helloController">
+        <!---一定以 /开头-->
+        <action name="/hello.jsp" method="hello"/>
+
+        <action name="/fly.jsp" method="fly"/>
+    </class>
+</mvc>

@@ -27,12 +27,25 @@
     <modelVersion>4.0.0</modelVersion>
     <version>1.0-SNAPSHOT</version>
     <artifactId>sparrow-test</artifactId>
+    <packaging>war</packaging>
 
     <properties>
         <spring.framework.version>4.2.6.RELEASE</spring.framework.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
         <!--sparrow-->
         <dependency>
             <groupId>com.sparrow</groupId>
@@ -187,18 +200,34 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <filters>
-            <filter>src/test/resources/system_config.properties</filter>
+            <filter>src/main/resources/sparrow_system_config.properties</filter>
         </filters>
         <resources>
             <resource>
-                <directory>src/test/resources</directory>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>*.xml</include>
                     <include>*.properties</include>
                     <include>META-INF/</include>
                 </includes>
                 <filtering>true</filtering>
+                <targetPath>${project.build.directory}/classes/</targetPath>
             </resource>
         </resources>
+        <plugins>
+            <!--JDK 要用 6或 7 tomcat 8的插件会报错-->
+            <!--org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException-->
+            <!--TOMCAT 8 配置方法 http://blog.csdn.net/u011781521/article/details/75194071-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.0-beta-1</version>
+                <configuration>
+                    <port>8080</port>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <server>tomcat6</server>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
