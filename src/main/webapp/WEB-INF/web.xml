@@ -92,10 +92,4 @@
         <welcome-file>index.html</welcome-file>
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
-    <jsp-config>
-        <taglib>
-            <taglib-uri>http://www.sparrowzoo.com/ui/extend</taglib-uri>
-            <taglib-location>/WEB-INF/classes/extend.tld</taglib-location>
-        </taglib>
-    </jsp-config>
 </web-app>

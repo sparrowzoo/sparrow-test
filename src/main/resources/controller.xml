@@ -5,8 +5,9 @@
     <!--在bean context中定义-->
     <class name="helloController">
         <!---一定以 /开头-->
-        <action name="/hello.jsp" method="hello"/>
+        <action name="/hello" method="hello"/>
 
-        <action name="/fly.jsp" method="fly"/>
+        <action name="/fly" method="fly"/>
+        <action name="/transit-test" method="transit"/>
     </class>
 </mvc>
