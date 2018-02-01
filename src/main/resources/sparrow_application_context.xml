@@ -15,7 +15,7 @@
         <property name="cacheClient" ref="cacheClient"/>
     </bean>
     <bean name="sparrow_default" class="com.sparrow.datasource.ConnectionPool" constructor-arg="sparrow_default"/>
-
-
     <bean name="helloController" class="com.sparrow.controller.HelloController" controller="true"/>
+
+    <bean name="sparrowHandlerInterceptor" class="com.sparrow.interceptor.SparrowHandlerInterceptor" interceptor="true"/>
 </beans>

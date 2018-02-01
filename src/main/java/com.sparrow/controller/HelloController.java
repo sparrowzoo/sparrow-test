@@ -14,7 +14,6 @@ public class HelloController {
     }
 
     public ViewWithModel fly() throws BusinessException {
-
         return ViewWithModel.redirect("fly-here", new HelloVO("我是从fly.jsp飞过来，你是不是没感觉？"));
     }
 
@@ -24,6 +23,10 @@ public class HelloController {
 
     @RequestParameters(names = "threadId,pageIndex")
     public ViewWithModel thread(Long threadId, Integer pageIndex) {
-        return ViewWithModel.forward("thread", new HelloVO("服务器的thread"+threadId+"-"+pageIndex));
+        return ViewWithModel.forward("thread", new HelloVO("服务器的thread" + threadId + "-" + pageIndex));
+    }
+
+    public HelloVO json() {
+        return new HelloVO("够意思吧，json不用页面");
     }
 }
