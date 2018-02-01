@@ -17,14 +17,14 @@
 
 package com.sparrow.cg;
 
-import com.sparrow.cg.impl.DynamicEngine;
+import com.sparrow.cg.impl.DynamicCompiler;
 
 /**
  * @author harry
  */
 public class CGTest {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-        Printer printer = (Printer) DynamicEngine
+        Printer printer = (Printer) DynamicCompiler
             .getInstance().sourceToObject("com.sparrow.cg.Demo1",
                 "package com.sparrow.cg;\n" +
                     "\n" +
@@ -37,6 +37,6 @@ public class CGTest {
                     "    }\n" +
                     "}");
         System.out.println(printer.print());
-        DynamicEngine.getInstance().unload(printer);
+        DynamicCompiler.getInstance().unload(printer);
     }
 }

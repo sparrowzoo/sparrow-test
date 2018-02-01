@@ -60,7 +60,8 @@
         <url-pattern>*</url-pattern>
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
+        <!--是否使用则业务端决定，框架建议注掉-->
+        <!--<dispatcher>FORWARD</dispatcher>-->
     </filter-mapping>
 
     <session-config>
