@@ -9,5 +9,6 @@
 
         <action name="/fly" method="fly"/>
         <action name="/transit-test" method="transit"/>
+        <action name="/thread-{threadId}-{pageIndex}" method="thread"/>
     </class>
 </mvc>

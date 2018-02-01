@@ -1,6 +1,7 @@
 package com.sparrow.controller;
 
 import com.sparrow.exception.BusinessException;
+import com.sparrow.mvc.RequestParameters;
 import com.sparrow.vo.HelloVO;
 import com.sparrow.web.support.ViewWithModel;
 
@@ -19,5 +20,10 @@ public class HelloController {
 
     public ViewWithModel transit() throws BusinessException {
         return ViewWithModel.transit("transit-here", new HelloVO("我从你这歇一会，最终我要到transit-here"));
+    }
+
+    @RequestParameters(names = "threadId,pageIndex")
+    public ViewWithModel thread(Long threadId, Integer pageIndex) {
+        return ViewWithModel.forward("thread", new HelloVO("服务器的thread"+threadId+"-"+pageIndex));
     }
 }
