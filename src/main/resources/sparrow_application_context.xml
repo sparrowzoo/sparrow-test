@@ -2,6 +2,13 @@
 <!DOCTYPE beans PUBLIC "-//sparrow Framework//DTD ioc Configuration//EN"
         "http://www.sparrowzoo.com/dtds/beanFactory.dtd">
 <beans>
+    <!---当前进程的所有datasource实例-->
+    <bean name="dataSourceFactory" class="com.sparrow.datasource.DataSourceFactory" constructor-arg="sparrow_default"/>
+    <bean name="connectionContextHolder" class="com.sparrow.support.ConnectionContextHolder">
+        <property name="dataSourceFactory" ref="dataSourceFactory"/>
+    </bean>
+
+
     <bean name="sparrowServletContainer" class="com.sparrow.web.support.SparrowServletContainer"/>
     <bean name="initializer" class="com.sparrow.web.WebApplicationInitializer"/>
 
@@ -14,8 +21,10 @@
     <bean name="cookieUtility" class="com.sparrow.support.web.CookieUtility">
         <property name="cacheClient" ref="cacheClient"/>
     </bean>
-    <bean name="sparrow_default" class="com.sparrow.datasource.ConnectionPool" constructor-arg="sparrow_default"/>
+    <bean name="sparrow_default" class="com.sparrow.datasource.ConnectionPool" constructor-arg="sparrow_default">
+        <property name="dataSourceFactory" ref="dataSourceFactory"/>
+    </bean>
     <bean name="helloController" class="com.sparrow.controller.HelloController" controller="true"/>
-
-    <bean name="sparrowHandlerInterceptor" class="com.sparrow.interceptor.SparrowHandlerInterceptor" interceptor="true"/>
+    <bean name="sparrowHandlerInterceptor" class="com.sparrow.interceptor.SparrowHandlerInterceptor"
+          interceptor="true"/>
 </beans>
