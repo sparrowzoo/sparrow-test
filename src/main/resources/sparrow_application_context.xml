@@ -3,8 +3,8 @@
         "http://www.sparrowzoo.com/dtds/beanFactory.dtd">
 <beans>
     <!---当前进程的所有datasource实例-->
-    <bean name="dataSourceFactory" class="com.sparrow.datasource.DataSourceFactory" constructor-arg="sparrow_default"/>
-    <bean name="connectionContextHolder" class="com.sparrow.datasource.ConnectionContextHolder">
+    <bean name="dataSourceFactory" class="com.sparrow.datasource.DataSourceFactoryImpl" constructor-arg="sparrow_default"/>
+    <bean name="connectionContextHolder" class="com.sparrow.datasource.ConnectionContextHolderImpl">
         <property name="dataSourceFactory" ref="dataSourceFactory"/>
     </bean>
 
