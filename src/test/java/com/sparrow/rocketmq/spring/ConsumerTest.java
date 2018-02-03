@@ -30,7 +30,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 public class ConsumerTest {
     @Test
-    public void start(){
-
+    public void start() {
+        while (true) {
+            try {
+                Thread.sleep(50000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
