@@ -23,6 +23,15 @@
         <property name="charset" value="UTF-8"/>
     </bean>
 
+    <bean name="cacheMonitor" class="com.sparrow.redis.SparrowCacheMonitor"/>
+    <bean name="redisPool" class="com.sparrow.cache.impl.redis.RedisPool">
+        <property name="urls" value="127.0.0.1:6379"/>
+        <property name="cacheMonitor" ref="cacheMonitor"/>
+    </bean>
+
+    <bean name="cacheClient" class="com.sparrow.cache.impl.redis.RedisCacheClient">
+        <property name="redisPool" ref="redisPool"/>
+    </bean>
 
     <bean name="helloEvent" class="com.sparrow.rocketmq.protocol.event.HelloEvent" scope="prototype"/>
 
@@ -32,5 +41,7 @@
         <property name="group" value="sparrow-sender"/>
         <property name="nameServerAddress" value="127.0.0.1:9876"/>
         <property name="tag" value="sparrow"/>
+        <property name="cacheClient" ref="cacheClient"/>
+        <property name="debug" value="true"/>
     </bean>
 </beans>

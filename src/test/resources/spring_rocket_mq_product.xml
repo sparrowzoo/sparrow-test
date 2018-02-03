@@ -34,5 +34,6 @@
         <property name="group" value="sparrow-sender"/>
         <property name="nameServerAddress" value="127.0.0.1:9876"/>
         <property name="tag" value="tag"/>
+        <property name="debug" value="true"/>
     </bean>
 </beans>

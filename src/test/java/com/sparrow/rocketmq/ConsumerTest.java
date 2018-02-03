@@ -25,6 +25,7 @@ import org.junit.Test;
  * Created by harry on 2017/6/15.
  */
 public class ConsumerTest {
+    @Test
     public void start() {
         Container container = new SparrowContainerImpl();
         container.init();
