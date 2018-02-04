@@ -55,27 +55,27 @@ public class RedisOrderSetTest {
         container.init();
         CacheClient client = container.getBean("cacheClient");
         client.key().delete(key);
-        client.orderSet().add(key, "field",1L);
+        client.sortedSet().add(key, "field",1L);
 
         client.key().delete(key);
-        System.out.println(client.orderSet().getSize(key));
+        System.out.println(client.sortedSet().getSize(key));
 
         Map<String,Double> set = new TreeMap<String, Double>();
         set.put("k1",1d);
         set.put("k2",2d);
         set.put("k3",3d);
-        client.orderSet().putAllWithScore(key, set);
+        client.sortedSet().putAllWithScore(key, set);
 
-        Map<String,Double> kv=client.orderSet().getAllWithScore(key);
+        Map<String,Double> kv=client.sortedSet().getAllWithScore(key);
 
         for (String db : kv.keySet()) {
             System.out.println(db);
             System.out.println(kv.get(db));
         }
 
-        System.out.println(client.orderSet().getSize(key));
+        System.out.println(client.sortedSet().getSize(key));
         client.key().delete(key);
-        Map<String,Double> fromdb = client.orderSet().getAllWithScore(key,String.class, new CacheDataNotFound<Map<String,Double>>() {
+        Map<String,Double> fromdb = client.sortedSet().getAllWithScore(key,String.class, new CacheDataNotFound<Map<String,Double>>() {
             @Override
             public Map<String,Double> read(KEY key) {
                 Map<String,Double> set = new TreeMap<String, Double>();
