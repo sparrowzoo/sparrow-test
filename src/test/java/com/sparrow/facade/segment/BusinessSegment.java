@@ -17,13 +17,15 @@
 
 package com.sparrow.facade.segment;
 
+import com.sparrow.constant.DATE_TIME;
 import com.sparrow.core.arithmetic.gouping.Segment;
+import com.sparrow.utility.DateTimeUtility;
 
 /**
  * @author harry
  */
-public class BusinessSegment extends Segment {
-    public BusinessSegment(Long id, String type, Integer start, Integer end) {
+public class BusinessSegment extends Segment<Long> {
+    public BusinessSegment(Long id, String type, Long start, Long end) {
         super(start, end);
         this.id = id;
         this.type = type;
@@ -50,9 +52,11 @@ public class BusinessSegment extends Segment {
 
     @Override
     public String toString() {
+        String start=DateTimeUtility.getFormatTime((Long) this.getStart().getPoint(), DATE_TIME.FORMAT_YYYY_MM_DD);
+        String end=DateTimeUtility.getFormatTime((Long)this.getEnd().getPoint(), DATE_TIME.FORMAT_YYYY_MM_DD);
         return "cat-record{" +
             "id=" + id +
             ", type='" + type + '\'' +
-            "} " + super.toString();
+            "} " +  start+"-"+end;
     }
 }
