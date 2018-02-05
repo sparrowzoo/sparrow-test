@@ -19,6 +19,7 @@ package com.sparrow.facade.compress;
 
 import com.sparrow.container.Container;
 import com.sparrow.container.impl.SparrowContainerImpl;
+import com.sparrow.support.EnvironmentSupport;
 import com.sparrow.utility.CompressUtility;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,22 +31,24 @@ import org.junit.Test;
 public class CompressTest {
     @Test
     public void unzip() throws IOException {
-        String path = "/Users/harry/sparrow-test-zip/";
-        String unzipFile = path + "unzip/sparrow-test.txt";
-        Container container = new SparrowContainerImpl("/file_config.xml");
-        container.init();
-        CompressUtility.unzip(path + "/unzip/computer.zip");
-        CompressUtility.unzip(path + "/unzip/computer.zip",unzipFile);
+        String path = EnvironmentSupport.getInstance().getApplicationSourcePath();
+        String unzipFile = path + "/resources/logo_unzip.jpg";
+        CompressUtility.unzip(path + "/resources/logo.zip");
+        CompressUtility.unzip(path + "/resources/logo.zip",unzipFile);
+
+        String readme = path + "/resources/readme_unzip.txt";
+        CompressUtility.unzip(path + "/resources/readme.zip");
+        CompressUtility.unzip(path + "/resources/readme.zip",readme);
     }
 
 
     @Test
     public void zip() throws IOException {
-        String path = "/Users/harry/sparrow-test-zip/";
-        String unzipFile = path + "unzip/computer.jpg";
-        Container container = new SparrowContainerImpl("/file_config.xml");
-        container.init();
+        String path = EnvironmentSupport.getInstance().getApplicationSourcePath();
+        String logo = path + "/resources/logo.jpg";
+        CompressUtility.zip(logo,new FileOutputStream(path+"/resources/logo.zip"));
 
-        CompressUtility.zip(unzipFile,new FileOutputStream(path+"unzip/computer.zip"));
+        String readme = path + "/resources/README.md";
+        CompressUtility.zip(readme,new FileOutputStream(path+"/resources/readme.zip"));
     }
 }
