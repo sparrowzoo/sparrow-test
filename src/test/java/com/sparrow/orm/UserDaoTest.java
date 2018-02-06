@@ -43,5 +43,11 @@ public class UserDaoTest {
 
         List<User> userList = userDAO.query("harry", "nickName", 1, 1);
         System.out.println(userList.size());
+        while (true) {
+            try {
+                Thread.sleep(10000L);
+            } catch (InterruptedException e) {
+            }
+        }
     }
 }
