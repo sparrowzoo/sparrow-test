@@ -17,7 +17,7 @@
   -->
 
 <!DOCTYPE beans PUBLIC "-//sparrow Framework//DTD ioc Configuration//EN"
-    "http://www.sparrowzoo.com/dtds/beanFactory.dtd">
+        "http://www.sparrowzoo.com/dtds/beanFactory.dtd">
 <beans>
 
     <bean name="initializer" class="com.sparrow.facade.initializer.SparrowContextInitializer"/>
@@ -30,14 +30,17 @@
         <property name="redisPool" ref="redisPool"/>
     </bean>
 
-    <bean name="datasourceFactory" class="com.sparrow.datasource.DataSourceFactoryImpl"
+
+    <bean name="dataSourceFactory" class="com.sparrow.datasource.DataSourceFactoryImpl"
           constructor-arg="sparrow_default"/>
-
-
-    <bean name="h2Datasource" class="org.h2.jdbcx.JdbcDataSource">
-        <property name="url" value="jdbc:h2:mem:sparrow;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/>
-        <property name="user" value="sa"/>
-        <property name="password" value="sa"/>
-        <property name="loginTimeout" value="60"/>
+    <bean name="connectionContextHolder" class="com.sparrow.datasource.ConnectionContextHolderImpl">
+        <property name="dataSourceFactory" ref="dataSourceFactory"/>
     </bean>
+    <bean name="sparrow_default" class="com.sparrow.datasource.ConnectionPool">
+        <property name="dataSourceFactory" ref="dataSourceFactory"/>
+    </bean>
+
+    <!--必须定义，且必须为prototype-->
+    <bean name="user" class="com.sparrow.orm.po.User" scope="prototype"/>
+    <bean name="userDao" class="com.sparrow.orm.dao.impl.UserDaoImpl"/>
 </beans>

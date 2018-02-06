@@ -20,6 +20,9 @@ import com.sparrow.container.Container;
 import com.sparrow.container.impl.SparrowContainerImpl;
 import java.sql.SQLException;
 import javax.sql.DataSource;
+
+import com.sparrow.core.spi.ApplicationContext;
+import com.sparrow.datasource.DataSourceFactory;
 import org.junit.Test;
 
 /**
@@ -28,9 +31,10 @@ import org.junit.Test;
 public class DatasourceTest {
     @Test
     public void datasourceTest() throws SQLException {
-        Container container=new SparrowContainerImpl("/dao.xml");
-        container.init();
-        DataSource dataSource= container.getBean("h2Datasource");
-        System.out.println(dataSource.getConnection());
+        Container container= ApplicationContext.getContainer();
+        container.init("/dao.xml",null);
+        DataSourceFactory dataSourceFactory= container.getBean("dataSourceFactory");
+        DataSource dataSource= dataSourceFactory.getDataSource();
+        System.out.println(dataSource);
     }
 }
