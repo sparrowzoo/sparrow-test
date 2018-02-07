@@ -18,7 +18,7 @@
 package com.sparrow.facade.segment;
 
 import com.sparrow.constant.DATE_TIME;
-import com.sparrow.core.arithmetic.gouping.Segment;
+import com.sparrow.core.algorithm.gouping.Segment;
 import com.sparrow.utility.DateTimeUtility;
 
 /**
