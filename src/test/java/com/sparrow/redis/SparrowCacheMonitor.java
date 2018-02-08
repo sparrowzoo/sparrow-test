@@ -18,6 +18,7 @@
 package com.sparrow.redis;
 
 import com.sparrow.cache.CacheMonitor;
+import com.sparrow.concurrent.AbstractLock;
 import com.sparrow.constant.cache.KEY;
 
 /**
@@ -33,5 +34,16 @@ public class SparrowCacheMonitor implements CacheMonitor{
     @Override
     public void monitor(Long startTime, Long endTime, KEY key) {
         //System.out.println("module-"+key.getModule()+" business.type-"+key.getBusiness()+" key-"+key.key()+" start.time-"+startTime+" end.time-"+endTime);
+    }
+
+    @Override
+    public void penetrate(KEY key) {
+        new AbstractLock(){
+            @Override
+            protected Boolean readLock(String key) {
+                //这里读性能指标，如果OK则true，如果不OK则返回false
+                return false;
+            }
+        }.retryAcquireLock(key.key());
     }
 }
