@@ -33,7 +33,7 @@ public class CGTest {
                     " */\n" +
                     "public class Demo1 implements Printer {\n" +
                     "    public String print() {\n" +
-                    "        return \"hello world\";\n" +
+                    "        return \"hello world22\";\n" +
                     "    }\n" +
                     "}");
         System.out.println(printer.print());
