@@ -64,8 +64,8 @@
         <!--sparrow-->
         <dependency>
             <groupId>com.sparrow</groupId>
-            <artifactId>sparrow-cg</artifactId>
-            <version>${sparrow_cg_version}</version>
+            <artifactId>sparrow-loader</artifactId>
+            <version>${sparrow_loader_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
