@@ -25,8 +25,8 @@ import java.util.List;
 public class BucketTest {
     public static void main(String[] args) {
         Bucket<Integer> bucket = new Bucket<Integer>(10);
-        for (int i = 0; i < 1001; i++) {
-            List<Integer> list = bucket.fill(i);
+        for (int i = 0; i < 1006; i++) {
+            List<Integer> list = bucket.synFill(i);
             if (list != null) {
                 for(Integer item:list){
                     System.out.print(item+",");
@@ -34,7 +34,10 @@ public class BucketTest {
                 System.out.println();
             }
         }
-        System.out.println(bucket.getBucket());
+        if(!bucket.isEmpty()) {
+            System.out.println(bucket.getBucket());
+        }
+        System.out.println(bucket.getCount());
         bucket.clear();
     }
 }
