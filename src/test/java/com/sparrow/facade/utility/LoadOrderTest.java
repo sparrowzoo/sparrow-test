@@ -14,35 +14,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sparrow.facade.bucket;
-
-import com.sparrow.core.algorithm.bucket.Bucket;
-import com.sparrow.core.algorithm.bucket.Overflow;
-import java.util.List;
+package com.sparrow.facade.utility;
 
 /**
  * @author by harry
  */
-public class BucketTest {
+public class LoadOrderTest {
+    private int i = initInter();
+
+    private int initInter() {
+        System.out.println(1);
+        return 1;
+    }
+}
+
+class LoadOrderTestB extends LoadOrderTest {
+    private static int i=initInteger();
+    private static int initInteger(){
+        System.out.println(2);
+        return 2;
+    }
     public static void main(String[] args) {
-        Bucket<Integer> bucket = new Bucket<Integer>(10, new Overflow<Integer>() {
-            @Override public boolean hook(List<Integer> list) {
-                if (list != null) {
-                    for (Integer item : list) {
-                        System.out.print(item + ",");
-                    }
-                    System.out.println();
-                }
-                return true;
-            }
-        });
-        for (int i = 0; i < 1000; i++) {
-            bucket.synFill(i);
-        }
-        if (!bucket.isEmpty()) {
-            System.out.println(bucket.getBucket());
-        }
-        System.out.println(bucket.getCount());
-        bucket.clear();
+        System.out.println(3);
+        LoadOrderTest loadOrderTest=new LoadOrderTestB();
     }
 }

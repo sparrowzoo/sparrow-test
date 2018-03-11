@@ -14,35 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sparrow.facade.bucket;
+package com.sparrow.facade.utility;
 
-import com.sparrow.core.algorithm.bucket.Bucket;
-import com.sparrow.core.algorithm.bucket.Overflow;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * @author by harry
  */
-public class BucketTest {
+public class CollectionTest {
     public static void main(String[] args) {
-        Bucket<Integer> bucket = new Bucket<Integer>(10, new Overflow<Integer>() {
-            @Override public boolean hook(List<Integer> list) {
-                if (list != null) {
-                    for (Integer item : list) {
-                        System.out.print(item + ",");
-                    }
-                    System.out.println();
-                }
-                return true;
-            }
-        });
-        for (int i = 0; i < 1000; i++) {
-            bucket.synFill(i);
+        List<CompareEntity> list=new ArrayList<CompareEntity>();
+        list.add(new CompareEntity(1,"zhangsan"));
+        list.add(new CompareEntity(5,"lisi"));
+        list.add(new CompareEntity(3,"wangwu"));
+        Collections.sort(list);
+        for(CompareEntity i:list){
+            System.out.println(i.getOrder());
         }
-        if (!bucket.isEmpty()) {
-            System.out.println(bucket.getBucket());
-        }
-        System.out.println(bucket.getCount());
-        bucket.clear();
     }
 }
