@@ -45,6 +45,7 @@ public class CompareEntity implements Comparable<CompareEntity>{
     }
 
     @Override public int compareTo(CompareEntity o) {
+        //1 2 3 4
         return this.order-o.order;
     }
 }

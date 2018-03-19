@@ -39,7 +39,7 @@ public class RedisLatchTest {
         final KEY product=new KEY.Builder().business(code).businessId("1").build();
         final DistributedCountDownLatch distributedCountDownLatch = new RedisDistributedCountDownLatch(cacheClient);
         distributedCountDownLatch.product(product,"1");
-        distributedCountDownLatch.product(product,"2");
+
         distributedCountDownLatch.consume(product,"1");
 
         new Thread(new Runnable() {
@@ -53,6 +53,7 @@ public class RedisLatchTest {
                 System.out.println("consume 2");
             }
         }).start();
+        distributedCountDownLatch.product(product,"2");
         distributedCountDownLatch.monitor(product,5);
         System.out.println("game over");
     }
