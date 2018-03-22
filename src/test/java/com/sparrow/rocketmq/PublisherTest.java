@@ -30,7 +30,8 @@ import org.junit.Test;
  */
 public class PublisherTest {
     public static void main(String[] args) {
-        KEY key = new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(1).build();
+        KEY productKey = new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(1).build();
+        KEY consumerKey=new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(2).build();
         Container container = new SparrowContainerImpl();
         container.init();
         MQPublisher mqPublisher = container.getBean("mqPublisher");
@@ -38,7 +39,7 @@ public class PublisherTest {
         helloEvent.setMessage("msg");
         try {
             while (true) {
-                mqPublisher.publish(helloEvent, key);
+                mqPublisher.publish(helloEvent, productKey,consumerKey);
             }
         } catch (Throwable throwable) {
             throwable.printStackTrace();

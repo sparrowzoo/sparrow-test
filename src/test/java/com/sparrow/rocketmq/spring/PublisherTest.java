@@ -40,11 +40,12 @@ public class PublisherTest {
     @Test
     public void publish() {
         HelloEvent helloEvent = new HelloEvent();
-        KEY key=new KEY.Builder().business(KEY_CMS.CMS_ALL_CRAWL).businessId(1).build();
+        KEY productKey=new KEY.Builder().business(KEY_CMS.CMS_ALL_CRAWL).businessId(1).build();
+        KEY consumerKey=new KEY.Builder().business(KEY_CMS.CMS_ALL_CRAWL).businessId(2).build();
         helloEvent.setMessage("msg");
         try {
             while (true){
-                mqPublisher.publish(helloEvent,key);
+                mqPublisher.publish(helloEvent,productKey,consumerKey);
             }
         } catch (Throwable throwable) {
             throwable.printStackTrace();
