@@ -33,29 +33,28 @@ public class RedisLatchTest {
     public static void main(String[] args) {
         Container container = ApplicationContext.getContainer();
         container.init();
-        CacheClient cacheClient=container.getBean("cacheClient");
+        CacheClient cacheClient = container.getBean("cacheClient");
 
         KEY.Business code = new KEY.Business(SPARROW_MODULE.CMS, "ID", "NAME", "PAIR");
-        final KEY product=new KEY.Builder().business(code).businessId("1").build();
-        final KEY consumer=new KEY.Builder().business(code).businessId("2").build();
+        final KEY product = new KEY.Builder().business(code).businessId("1").build();
         final DistributedCountDownLatch distributedCountDownLatch = new RedisDistributedCountDownLatch(cacheClient);
-        distributedCountDownLatch.product(product,"1");
+        distributedCountDownLatch.product(product, "1");
 
-        distributedCountDownLatch.consume(consumer,"1");
+        distributedCountDownLatch.consume(product, "1");
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Thread.sleep(1000 * 20);
-                    distributedCountDownLatch.consume(consumer,"2");
+                    distributedCountDownLatch.consume(product, "2");
                 } catch (InterruptedException e) {
                 }
                 System.out.println("consume 2");
             }
         }).start();
-        distributedCountDownLatch.product(product,"2");
-        distributedCountDownLatch.monitor(product,consumer,5);
+        distributedCountDownLatch.product(product, "2");
+        distributedCountDownLatch.monitor(product, 5);
         System.out.println("game over");
     }
 }

@@ -23,6 +23,7 @@ import com.sparrow.container.Container;
 import com.sparrow.container.impl.SparrowContainerImpl;
 import com.sparrow.mq.MQPublisher;
 import com.sparrow.rocketmq.protocol.event.HelloEvent;
+import com.sparrow.support.latch.DistributedCountDownLatch;
 import org.junit.Test;
 
 /**
@@ -30,17 +31,18 @@ import org.junit.Test;
  */
 public class PublisherTest {
     public static void main(String[] args) {
-        KEY productKey = new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(1).build();
-        KEY consumerKey=new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(2).build();
-        Container container = new SparrowContainerImpl();
+        KEY productKey = new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(2).build();
+        Container container = new SparrowContainerImpl("/sparrow_rocketmq_producer.xml");
         container.init();
         MQPublisher mqPublisher = container.getBean("mqPublisher");
+        DistributedCountDownLatch distributedCountDownLatch=container.getBean("distributedCountDownLatch");
         HelloEvent helloEvent = new HelloEvent();
         helloEvent.setMessage("msg");
         try {
-            while (true) {
-                mqPublisher.publish(helloEvent, productKey,consumerKey);
+            for (int i=0;i<100;i++) {
+                mqPublisher.publish(helloEvent, productKey);
             }
+            distributedCountDownLatch.monitor(productKey);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
