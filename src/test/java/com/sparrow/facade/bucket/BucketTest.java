@@ -36,12 +36,10 @@ public class BucketTest {
                 return true;
             }
         });
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1002; i++) {
             bucket.synFill(i);
         }
-        if (!bucket.isEmpty()) {
-            System.out.println(bucket.getBucket());
-        }
+        bucket.over();
         System.out.println(bucket.getCount());
         bucket.clear();
     }
