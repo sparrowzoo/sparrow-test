@@ -41,7 +41,7 @@
 
     <bean name="mqPublisher" class="com.sparrow.rocketmq.impl.SparrowRocketMQPublisher">
         <property name="messageConverter" ref="messageConverter"/>
-        <property name="topic" value="sparrow-topic"/>
+        <property name="topic" value="sparrow-test-topic"/>
         <property name="group" value="sparrow-sender"/>
         <property name="nameServerAddress" value="127.0.0.1:9876"/>
         <property name="tag" value="sparrow"/>
