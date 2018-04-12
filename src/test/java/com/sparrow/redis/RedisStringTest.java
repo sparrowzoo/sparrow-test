@@ -82,7 +82,9 @@ public class RedisStringTest {
         System.out.println(client.string().get(key));
 
         client.key().delete(key);
-        client.string().setIfNotExist(key, "not exist");
+       Long count=  client.string().setIfNotExist(key, "not exist");
+         count=  client.string().setIfNotExist(key, "not exist");
+        System.out.println(count);
         System.out.println(client.string().get(key));
         client.key().delete(key);
         System.out.println(client.string().get(key));

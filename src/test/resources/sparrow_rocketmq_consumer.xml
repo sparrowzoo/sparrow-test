@@ -52,7 +52,7 @@
 
     <bean name="mqConsumer" class="com.sparrow.rocketmq.impl.RocketMQConsumer">
         <property name="groupName" value="sparrow-consumer-group"/>
-        <property name="topicConfig" value="sparrow-topic:sparrow"/>
+        <property name="topicConfig" value="sparrow-test-topic:sparrow"/>
         <property name="messageListener" ref="rocketMQMessageListener"/>
         <property name="nameServerAddress" value="127.0.0.1:9876"/>
         <property name="cacheClient" ref="cacheClient"/>
