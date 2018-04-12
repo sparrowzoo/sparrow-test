@@ -1,4 +1,4 @@
-package com.sparrow.jdk;
+package com.sparrow.jdk.volatilekey;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,7 +22,6 @@ public class AtomicTest extends Thread {
     public static void main(String[] args) {
         AtomicTest tt = new AtomicTest();
         tt.start();
-
         AtomicTest t2 = new AtomicTest();
         t2.start();
         try {

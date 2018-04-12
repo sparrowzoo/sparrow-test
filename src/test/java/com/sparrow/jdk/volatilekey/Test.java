@@ -1,4 +1,4 @@
-package com.sparrow.jdk;
+package com.sparrow.jdk.volatilekey;
 
 
 /*
@@ -11,7 +11,7 @@ package com.sparrow.jdk;
  *
  */
 public class Test {
-    static User user=new User();
+    static User user=new User(100);
 
     public static void main(String[] args) {
         test();
