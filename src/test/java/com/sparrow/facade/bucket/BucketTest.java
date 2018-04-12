@@ -41,6 +41,5 @@ public class BucketTest {
         }
         bucket.over();
         System.out.println(bucket.getCount());
-        bucket.clear();
     }
 }
