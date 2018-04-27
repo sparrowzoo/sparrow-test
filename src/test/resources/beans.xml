@@ -35,4 +35,6 @@
     <bean name="cacheClient" class="com.sparrow.cache.impl.redis.RedisCacheClient">
         <property name="redisPool" ref="redisPool"/>
     </bean>
+
+    <bean name="elapsedTimeMonitor" class="com.sparrow.core.monitor.impl.LogElapsedTimeMonitorImpl"/>
 </beans>
