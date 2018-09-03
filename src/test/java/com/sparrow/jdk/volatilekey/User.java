@@ -4,9 +4,13 @@ package com.sparrow.jdk.volatilekey;
  * Created by TCLDUSER on 2018/4/9.
  */
 public class User {
-    private int age=10;
-
-    public User(int age) {
+    private int age = 10;
+    private byte[] bytes;
+    public User(int age){
+        this.age=age;
+    }
+    public User(int age, byte[] bytes) {
+        this.bytes = bytes;
         this.age = age;
     }
 
@@ -16,5 +20,13 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public byte[] getBytes() {
+        return bytes;
+    }
+
+    public void setBytes(byte[] bytes) {
+        this.bytes = bytes;
     }
 }
