@@ -17,29 +17,38 @@
 
 package com.sparrow.facade.thread;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * Created by harry on 2017/2/15.
  */
 public class ThreadPoolCachedTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ExecutorService fixedService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 100; i++) {
-            fixedService.submit(new Runnable() {
+        List<Future> futures = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            Future future = fixedService.submit(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.print(1);
+                    System.out.println("runnable ...." + Thread.currentThread().getId());
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(5000L);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             });
+            futures.add(future);
         }
         fixedService.shutdown();
+
+        for (Future future : futures) {
+            future.cancel(true);
+            System.out.println(future.isDone());
+        }
+
         System.out.println("end....");
     }
 }

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.sparrow;
+package com.sparrow.jdk.io;
 
 import com.sparrow.utility.FileUtility;
 import com.sparrow.utility.ImageUtility;
