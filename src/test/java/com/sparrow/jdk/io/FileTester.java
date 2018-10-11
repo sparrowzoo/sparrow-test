@@ -15,8 +15,9 @@
  * limitations under the License.
  */
 
-package com.sparrow;
+package com.sparrow.jdk.io;
 
+import com.sparrow.cryptogram.MessageSignature;
 import com.sparrow.utility.FileUtility;
 
 /**
@@ -24,6 +25,9 @@ import com.sparrow.utility.FileUtility;
  */
 public class FileTester {
     public static void main(String[] args) {
+        MessageSignature messageSignature=new MessageSignature();
+        System.out.println(messageSignature.md5("12345"));
+
         double recordCount = 200000000;
         double recordSize = recordCount * 4;
 

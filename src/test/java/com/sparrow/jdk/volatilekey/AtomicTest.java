@@ -9,6 +9,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AtomicTest extends Thread {
 
     private static CountDownLatch waiter = new CountDownLatch(2);
+
+    //private static volatile int count = 0;
+
     private static volatile AtomicInteger count = new AtomicInteger(0);
 
     @Override

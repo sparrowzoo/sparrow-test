@@ -98,7 +98,7 @@ public class GlassFishTester {
     public static final char[] take() {
         //char[] t = getQueue().poll();
         //if (t==null)
-            return new char[8];
+            return new char[64];
         //return t;
     }
 }

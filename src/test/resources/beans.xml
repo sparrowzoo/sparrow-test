@@ -19,6 +19,9 @@
 <!DOCTYPE beans PUBLIC "-//sparrow Framework//DTD ioc Configuration//EN"
     "http://www.sparrowzoo.com/dtds/beanFactory.dtd">
 <beans>
+    <!--<import resource="sparrow_rocketmq_producer.xml"/>-->
+    <!--<import resource="sparrow_rocketmq_consumer.xml"/>-->
+
     <bean name="initializer" class="com.sparrow.facade.initializer.SparrowContextInitializer"/>
     <bean name="source" class="com.sparrow.facade.beans.Source" scope="prototype"/>
     <bean name="target" class="com.sparrow.facade.beans.Target" scope="prototype"/>

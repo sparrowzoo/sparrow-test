@@ -19,6 +19,7 @@ package com.sparrow.facade.thread;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,25 +27,34 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolScheduleTest {
     public static void main(String[] args) {
-        ScheduledExecutorService fixedService = Executors.newScheduledThreadPool(2);
-        fixedService.scheduleAtFixedRate(new Runnable() {
+        ScheduledExecutorService fixedService = Executors.newScheduledThreadPool(1);
+        ScheduledFuture scheduledFuture = fixedService.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                System.out.print(1);
+                System.out.print("current" + Thread.currentThread().getId());
+                try {
+                    Thread.sleep(5000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }, 1, 1, TimeUnit.SECONDS);
+        }, 0, 1, TimeUnit.SECONDS);
 
-//        fixedService.scheduleAtFixedRate(new Runnable() {
-//            @Override
-//            public void run() {
-//                System.out.print(2);
-//            }
-//        }, 1, 1, TimeUnit.SECONDS);
-//        fixedService.scheduleAtFixedRate(new Runnable() {
-//            @Override
-//            public void run() {
-//                System.out.print(3);
-//            }
-//        }, 1, 1, TimeUnit.SECONDS);
+
+        try {
+            Thread.sleep(2000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        scheduledFuture.cancel(false);
+        /// for (;;) {
+        fixedService.schedule(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("submit" + Thread.currentThread().getId());
+            }
+        }, 0, TimeUnit.SECONDS);
+        // }
     }
 }
