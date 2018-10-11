@@ -20,7 +20,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>sparrow-super</artifactId>
+        <artifactId>sparrow-bom</artifactId>
         <groupId>com.sparrow</groupId>
         <version>1.0</version>
     </parent>
@@ -49,63 +49,51 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet_api_version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
-            <version>${jsp_api_version}</version>
         </dependency>
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
         </dependency>
         <!--sparrow-->
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-loader</artifactId>
-            <version>${sparrow_loader_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-container</artifactId>
-            <version>${sparrow_container_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-data-source</artifactId>
-            <version>${sparrow_data_source_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-json</artifactId>
-            <version>${sparrow_json_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-orm</artifactId>
-            <version>${sparrow_orm_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-mvc</artifactId>
-            <version>${sparrow_mvc_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-rocketmq-client</artifactId>
-            <version>${sparrow_rocketmq_client_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-log</artifactId>
-            <version>${sparrow_log_version}</version>
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-sharded-jedis</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <!--sparrow end-->
 
