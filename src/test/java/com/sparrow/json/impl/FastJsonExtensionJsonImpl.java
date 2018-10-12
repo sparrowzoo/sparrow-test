@@ -18,10 +18,12 @@
 package com.sparrow.json.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.util.ParameterizedTypeImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sparrow.json.Json;
 import com.sparrow.support.Entity;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,36 +35,52 @@ import javax.json.JsonReader;
  * @author by harry
  */
 public class FastJsonExtensionJsonImpl implements Json {
-    @Override public String toString(Entity model) {
+    @Override
+    public String toString(Entity model) {
         return JSON.toJSONString(model);
     }
 
-    @Override public String toString(Map<String, Object> map) {
+    @Override
+    public String toString(Map<String, Object> map) {
         return JSON.toJSONString(map);
     }
 
 
-    @Override public <T> String toString(List<T> models) {
+    @Override
+    public <T> String toString(List<T> models) {
         return new Gson().toJson(models);
     }
 
-    @Override public <T> T parse(String json, Class<T> clazz) {
+    @Override
+    public <T> T parse(String json, Class<T> clazz) {
         Gson gson = new Gson();
-        T result = JSON.parseObject(json,clazz);
-        return result;
-    }
-
-
-    @Override public <T> List<T> parseList(String json, Class<T> clazz) {
-        Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<T>>() {
-        }.getType();
-        List<T> result = gson.fromJson(json, type);
+        T result = JSON.parseObject(json, clazz);
         return result;
     }
 
     @Override
+    public <T> T parse(String json, Class... clazz) {
+        return JSON.parseObject(json,buildType(clazz));
+    }
+
+    private Type buildType(Class... types) {
+        ParameterizedTypeImpl beforeType = null;
+        if (types != null && types.length > 0) {
+            for (int i = types.length - 1; i > 0; i--) {
+                beforeType = new ParameterizedTypeImpl(new Type[]{beforeType == null ? types[i] : beforeType}, null, types[i - 1]);
+            }
+        }
+        return beforeType;
+    }
+
+
+    @Override
+    public <T> List<T> parseList(String json, Class<T> clazz) {
+        return JSON.parseArray(json, clazz);
+    }
+
+    @Override
     public Map<String, Object> parse(String json) {
-       return JSON.parseObject(json);
+        return JSON.parseObject(json);
     }
 }

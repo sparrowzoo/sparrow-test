@@ -17,10 +17,12 @@
 
 package com.sparrow.json.impl;
 
+import com.alibaba.fastjson.util.ParameterizedTypeImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sparrow.json.Json;
 import com.sparrow.support.Entity;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,26 +34,49 @@ import javax.json.JsonReader;
  * @author by harry
  */
 public class GsonExtensionJsonImpl implements Json {
-    @Override public String toString(Entity model) {
+    @Override
+    public String toString(Entity model) {
         Gson gson = new Gson();
         return gson.toJson(model);
     }
 
-    @Override public String toString(Map<String, Object> map) {
+    @Override
+    public String toString(Map<String, Object> map) {
         return new Gson().toJson(map);
     }
 
-    @Override public <T> String toString(List<T> models) {
+    @Override
+    public <T> String toString(List<T> models) {
         return new Gson().toJson(models);
     }
 
-    @Override public <T> T parse(String json, Class<T> clazz) {
+    @Override
+    public <T> T parse(String json, Class<T> clazz) {
         Gson gson = new Gson();
         T result = gson.fromJson(json.toString(), clazz);
         return result;
     }
 
-    @Override public <T> List<T> parseList(String json, Class<T> clazz) {
+    @Override
+    public <T> T parse(String json, Class... clazz) {
+        // Gson gson = new Gson();
+        //return gson.fromJson(json,this.buildType(clazz));
+        throw new UnsupportedOperationException("sorry todo");
+    }
+
+//    private Type buildType(Class... types) {
+//        ParameterizedTypeImpl beforeType = null;
+//        if (types != null && types.length > 0) {
+//            for (int i = types.length - 1; i > 0; i--) {
+//                beforeType = new ParameterizedTypeImpl(new Type[]{beforeType == null ? types[i] : beforeType}, null, types[i - 1]);
+//            }
+//        }
+//        return beforeType;
+//    }
+
+
+    @Override
+    public <T> List<T> parseList(String json, Class<T> clazz) {
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<T>>() {
         }.getType();

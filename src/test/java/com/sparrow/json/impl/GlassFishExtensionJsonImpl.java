@@ -51,6 +51,11 @@ public class GlassFishExtensionJsonImpl implements Json {
         return result;
     }
 
+    @Override
+    public <T> T parse(String json, Class... clazz) {
+        throw new UnsupportedOperationException("sorry todo!");
+    }
+
     @Override public <T> List<T> parseList(String json, Class<T> clazz) {
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<T>>() {
