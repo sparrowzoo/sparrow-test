@@ -19,16 +19,19 @@ package com.sparrow.facade.monitor;
 import com.sparrow.container.Container;
 import com.sparrow.core.monitor.ElapsedTimeMonitor;
 import com.sparrow.core.spi.ApplicationContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author by harry
  */
 public class Monitor {
+    private static Logger logger= LoggerFactory.getLogger(Monitor.class);
     public static void main(String[] args) {
         Container container = ApplicationContext.getContainer();
         container.init();
         final ElapsedTimeMonitor elapsedTimeMonitor = container.getBean("elapsedTimeMonitor");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             Thread thread = new Thread(new Runnable() {
                 @Override public void run() {
                     elapsedTimeMonitor.start();
@@ -37,7 +40,20 @@ public class Monitor {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    elapsedTimeMonitor.elapsed("k1", "k2");
+
+                    elapsedTimeMonitor.start();
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println(elapsedTimeMonitor.toString());
+                    elapsedTimeMonitor.elapsed("sleep", "100");
+                    System.out.println(elapsedTimeMonitor.toString());
+                    elapsedTimeMonitor.elapsed("sleep", "100+99*"+Thread.currentThread().getName());
+
+                    System.out.println(elapsedTimeMonitor.toString());
                 }
             });
             thread.setName(i + "");
