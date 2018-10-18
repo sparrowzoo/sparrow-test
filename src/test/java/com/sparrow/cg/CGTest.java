@@ -38,6 +38,10 @@ public class CGTest {
                     "}");
         System.out.println(printer.print());
         DynamicCompiler.getInstance().unload(printer);
-        System.out.println(printer.getClass().getClassLoader());
+        ClassLoader classLoader=printer.getClass().getClassLoader();
+        while (classLoader!=null) {
+            System.out.println(classLoader);
+            classLoader=classLoader.getParent();
+        }
     }
 }
