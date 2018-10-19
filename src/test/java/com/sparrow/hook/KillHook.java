@@ -8,6 +8,7 @@ public class KillHook {
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
+                Runtime.getRuntime().
                 System.out.println("execute Hook.....");
             }
         }));
