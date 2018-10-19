@@ -5,6 +5,7 @@ package com.sparrow.jdk.volatilekey;
  */
 public class User {
     private int age = 10;
+    private int no=100;
     private byte[] bytes;
     public User(int age){
         this.age=age;
@@ -29,4 +30,6 @@ public class User {
     public void setBytes(byte[] bytes) {
         this.bytes = bytes;
     }
+
+
 }
