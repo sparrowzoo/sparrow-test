@@ -51,24 +51,32 @@ public class DateTimeUtilityTest {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis() + DATE_TIME.MILLISECOND_UNIT.get(DATE_TIME_UNIT.DAY) * 80);
         Long time = DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.SECOND);
-        System.out.println("SECOND"+DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
-        time= DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.MINUTE);
-        System.out.println("MINUTE"+DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
-        time= DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.HOUR);
-        System.out.println("HOUR  "+DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
-        time= DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.DAY);
-        System.out.println("DAY   "+DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
+        System.out.println("SECOND" + DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
+        time = DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.MINUTE);
+        System.out.println("MINUTE" + DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
+        time = DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.HOUR);
+        System.out.println("HOUR  " + DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
+        time = DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.DAY);
+        System.out.println("DAY   " + DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
 
-        time= DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.MONTH);
-        System.out.println("MONTH "+DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
-        time= DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.YEAR);
-        System.out.println("YEAR  "+DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
+        time = DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.MONTH);
+        System.out.println("MONTH " + DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
+        time = DateTimeUtility.ceiling(calendar, DATE_TIME_UNIT.YEAR);
+        System.out.println("YEAR  " + DateTimeUtility.getFormatTime(time, DATE_TIME.FORMAT_YYYYMMDDHHMMSS));
     }
+
     @Test
     public void interval() {
         Calendar calendar = Calendar.getInstance();
-        Long time =calendar.getTimeInMillis();
+        Long time = calendar.getTimeInMillis();
         calendar.setTimeInMillis(time + DATE_TIME.MILLISECOND_UNIT.get(DATE_TIME_UNIT.DAY) * 2);
-        System.out.println("Interval  " + DateTimeUtility.getInterval(time,calendar.getTimeInMillis(), DATE_TIME_UNIT.HOUR));
+        System.out.println("Interval  " + DateTimeUtility.getInterval(time, calendar.getTimeInMillis(), DATE_TIME_UNIT.HOUR));
+    }
+
+    @Test
+    public void beforeFormat() {
+        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(61L,3,0));
+        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(3600 * 24 * 3670*100L + 3600 * 23 + 60 * 30 + 59L));
+        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(3600 +120+ 59L,3,0));
     }
 }
