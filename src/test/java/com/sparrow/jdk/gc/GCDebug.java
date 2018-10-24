@@ -1,5 +1,7 @@
 package com.sparrow.jdk.gc;
 
+import com.sparrow.jvm.hotspot.JvmParameter;
+
 /**
  * -XX:+UseGCLogFileRotation
  * -XX:NumberOfGClogFiles=1
@@ -16,9 +18,9 @@ package com.sparrow.jdk.gc;
  * -Xss128k
  * -Xloggc:d://logs/gc_%p.log
  * -----------------------------------------------
- * -XX:+UseGCLogFileRotation  启用GC日志文件的自动转储 (Since Java)
- * -XX:NumberOfGClogFiles=1  GC日志文件的循环数目 (Since Java)
- * -XX:GCLogFileSize=1M  控制GC日志文件的大小 (Since Java)
+ * -XX:+UseGCLogFileRotation  启用GC日志文件的自动转储
+ * -XX:NumberOfGClogFiles=1  GC日志文件的循环数目
+ * -XX:GCLogFileSize=1M  控制GC日志文件的大小
  * -XX:+PrintGCDetails (-verbose:gc & -XX:+PrintGC)
  * -XX:+HeapDumpBeforeFullGC  Full GC前dump
  * -XX:+HeapDumpAfterFullGC    在Full GC后dump
@@ -27,6 +29,15 @@ package com.sparrow.jdk.gc;
  */
 public class GCDebug {
     public static void main(String[] args) {
-        int memoryLength = 1000;
+        JvmParameter jvmParameter = new JvmParameter(1024 * 1024 * 4,
+                512,
+                512,
+                6,
+                0,
+                "d://jvm_logs/gc_log",
+                "d://jvm_logs/dump",
+                "d://jvm_logs/error");
+        System.out.println(jvmParameter.desc());
+        System.out.println(jvmParameter.toString());
     }
 }
