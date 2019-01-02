@@ -1,5 +1,7 @@
 package com.sparrow.jdk.clinit;
 
+import java.util.concurrent.LinkedBlockingDeque;
+
 public class Main {
     static {
         System.out.println("static init");
