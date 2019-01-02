@@ -12,15 +12,13 @@ import java.util.Set;
  * Created by harry on 2018/4/12.
  */
 public class TestWeakReference {
-    SoftReference<Set<User>> users = new SoftReference<Set<User>>(new HashSet<User>());
+   static WeakReference<User> user = new WeakReference<User>(new User(100, new byte[10000]));
 
     public static void main(String[] args) {
-        //User user = ;
-        TestWeakReference testWeakReference = new TestWeakReference();
         int i = 0;
         while (true) {
-            if (testWeakReference.users.get() != null) {
-                testWeakReference.users.get().add(new User(100, new byte[10000]));
+            //User u=user.get();
+            if (user.get() != null) {
                 i++;
                 System.out.println("Object is alive for " + i + " loops - ");
             } else {
@@ -28,7 +26,6 @@ public class TestWeakReference {
                 break;
             }
             System.gc();
-            Runtime.getRuntime().runFinalization();
         }
     }
 }
