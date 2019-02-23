@@ -24,4 +24,5 @@ public class Demo implements Printer {
     public String print() {
         return "hello world";
     }
+
 }

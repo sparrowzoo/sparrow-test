@@ -1,6 +1,6 @@
 package com.sparrow.jdk.gc;
 
-import com.sparrow.jvm.hotspot.JvmParameter;
+//import com.sparrow.jvm.hotspot.JvmParameter;
 
 /**
  * -XX:+UseGCLogFileRotation
@@ -27,17 +27,17 @@ import com.sparrow.jvm.hotspot.JvmParameter;
  * -XX:HeapDumpPath=d://logs/dump.hprof  设置Dump保存的路径
  * -Xmn2g 设置年轻代大小为2G。整个JVM内存大小=年轻代大小 + 年老代大小 + 持久代大小。持久代一般固定大小为64m，所以增大年轻代后，将会减小年老代大小。此值对系统性能影响较大，Sun官方推荐配置为整个堆的3/8。
  */
-public class GCDebug {
-    public static void main(String[] args) {
-        JvmParameter jvmParameter = new JvmParameter(1024 * 1024 * 4,
-                512,
-                512,
-                6,
-                0,
-                "d://jvm_logs/gc_log",
-                "d://jvm_logs/dump",
-                "d://jvm_logs/error");
-        System.out.println(jvmParameter.desc());
-        System.out.println(jvmParameter.toString());
-    }
-}
+//public class GCDebug {
+//    public static void main(String[] args) {
+//        JvmParameter jvmParameter = new JvmParameter(1024 * 1024 * 4,
+//                512,
+//                512,
+//                6,
+//                0,
+//                "d://jvm_logs/gc_log",
+//                "d://jvm_logs/dump",
+//                "d://jvm_logs/error");
+//        System.out.println(jvmParameter.desc());
+//        System.out.println(jvmParameter.toString());
+//    }
+//}

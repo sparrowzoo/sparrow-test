@@ -75,8 +75,8 @@ public class DateTimeUtilityTest {
 
     @Test
     public void beforeFormat() {
-        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(61L,3,0));
-        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(3600 * 24 * 3670*100L + 3600 * 23 + 60 * 30 + 59L));
-        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(3600 +120+ 59L,3,0));
+//        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(61L,3,0));
+//        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(3600 * 24 * 3670*100L + 3600 * 23 + 60 * 30 + 59L));
+//        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(3600 +120+ 59L,3,0));
     }
 }

@@ -4,6 +4,7 @@ package com.sparrow.jdk.threadlocal;
  * Created by harry on 2018/4/12.
  */
 public class ThreadLocalGCLeak extends Thread {
+   static   ThreadLocal tl = new MyThreadLocal();
     public static class MyThreadLocal extends ThreadLocal {
         private byte[] a = new byte[1024 * 1024 * 1];
         @Override
@@ -24,14 +25,21 @@ public class ThreadLocalGCLeak extends Thread {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                ThreadLocal tl = new MyThreadLocal();
+
                 tl.set(new MyBigObject());
-                //tl=null;//断开ThreadLocal的强引用
-                System.out.println("Full GC 1");
+                MyBigObject o=(MyBigObject) tl.get();
+
+                tl=null;//手动置为null，让gc回收
                 System.gc();
-                //while (true){}
+                System.out.println(tl);
+                System.out.println("Full GC 1");
+
+                //保证线程不死，可以注释掉演示线程死亡的效果
+                while (true){
+                }
             }
         });
+        thread.setDaemon(false);
         thread.start();
         System.out.println("Full GC 2");
         System.gc();
@@ -41,7 +49,5 @@ public class ThreadLocalGCLeak extends Thread {
         Thread.sleep(1000);
         System.out.println("Full GC 4");
         System.gc();
-        while (true) {
-        }
     }
 }

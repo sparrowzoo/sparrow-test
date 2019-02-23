@@ -31,6 +31,8 @@
 
     <properties>
         <spring.framework.version>4.2.6.RELEASE</spring.framework.version>
+        <maven.compile.source>1.7</maven.compile.source>
+        <maven.compile.target>1.7</maven.compile.target>
     </properties>
 
     <dependencies>
@@ -240,6 +242,18 @@
                     <port>8080</port>
                     <uriEncoding>UTF-8</uriEncoding>
                     <server>tomcat6</server>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compile.version}</version>
+                <configuration>
+                    <source>${maven.compile.source}</source>
+                    <target>${maven.compile.target}</target>
+                    <encoding>${maven.compile.encoding}</encoding>
+                    <debug>true</debug>
                 </configuration>
             </plugin>
         </plugins>

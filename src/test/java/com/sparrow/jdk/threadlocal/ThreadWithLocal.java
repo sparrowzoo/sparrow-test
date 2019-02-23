@@ -15,11 +15,12 @@ public class ThreadWithLocal extends Thread{
     //thread local
     private Long t;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ThreadWithLocal t=new ThreadWithLocal(System.nanoTime());
         t.start();
-        ThreadWithLocal t2=new ThreadWithLocal(System.nanoTime());
-        t2.start();
+        Thread.sleep(5000L);
+        //ThreadWithLocal t2=new ThreadWithLocal(System.nanoTime());
+        t.start();
     }
 }
 
