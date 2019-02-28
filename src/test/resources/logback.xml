@@ -78,6 +78,21 @@
     </appender>
 
 
+    <!--TimeBasedArchiveRemover base on {yyyy-MM-dd-HH-mm-ss} periodsElapsed-->
+    <appender name="rolling_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/Users/harry/sparrow/sparrow-shell/logs/logs.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/Users/harry/sparrow/sparrow-shell/logs/logs.%d{yyyy-MM-dd-HH-mm}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="LOGS"/>
@@ -94,5 +109,6 @@
     <logger name="com.sparrow" level="DEBUG" additivity="false">
         <appender-ref ref="@server.name@"/>
         <appender-ref ref="DEBUG"/>
+        <appender-ref ref="rolling_file"/>
     </logger>
 </configuration>

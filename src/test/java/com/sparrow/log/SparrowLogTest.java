@@ -26,6 +26,8 @@ public class SparrowLogTest {
     private static Logger logger= LoggerFactory.getLogger(SparrowLogTest.class);
 
     public static void main(String[] args) {
-        logger.error("error");
+        while (true) {
+            logger.error("error"+System.currentTimeMillis());
+        }
     }
 }

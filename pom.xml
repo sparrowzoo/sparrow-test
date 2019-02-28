@@ -89,10 +89,10 @@
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-rocketmq-client</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.sparrow</groupId>
-            <artifactId>sparrow-log</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.sparrow</groupId>-->
+            <!--<artifactId>sparrow-log</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-sharded-jedis</artifactId>
@@ -210,6 +210,11 @@
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
             <version>6.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 
