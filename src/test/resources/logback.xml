@@ -39,6 +39,9 @@
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>10MB</MaxFileSize>
         </triggeringPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
     </appender>
 
     <appender name="KAFKA" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -80,7 +83,7 @@
 
     <!--TimeBasedArchiveRemover base on {yyyy-MM-dd-HH-mm-ss} periodsElapsed-->
     <appender name="rolling_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/Users/harry/sparrow/sparrow-shell/logs/logs.log</file>
+        <file>/var/log/c1/logs.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>/Users/harry/sparrow/sparrow-shell/logs/logs.%d{yyyy-MM-dd-HH-mm}.%i.log</fileNamePattern>
             <maxFileSize>10MB</maxFileSize>
