@@ -1,7 +1,7 @@
 package com.sparrow.controller;
 
-import com.sparrow.exception.BusinessException;
 import com.sparrow.mvc.RequestParameters;
+import com.sparrow.protocol.BusinessException;
 import com.sparrow.vo.HelloVO;
 import com.sparrow.web.support.ViewWithModel;
 

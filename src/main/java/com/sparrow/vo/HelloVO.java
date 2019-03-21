@@ -1,6 +1,6 @@
 package com.sparrow.vo;
 
-import com.sparrow.support.protocol.VO;
+import com.sparrow.protocol.VO;
 
 /**
  * Created by harry on 2018/1/31.
