@@ -17,7 +17,7 @@
 
 package com.sparrow.facade.beans;
 
-import com.sparrow.support.Entity;
+import com.sparrow.protocol.Entity;
 
 import java.math.BigDecimal;
 import java.util.Date;

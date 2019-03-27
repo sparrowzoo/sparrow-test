@@ -17,18 +17,15 @@
 
 package com.sparrow.json.impl;
 
-import com.alibaba.fastjson.util.ParameterizedTypeImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sparrow.json.Json;
-import com.sparrow.support.Entity;
+import com.sparrow.protocol.Entity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 
 /**
  * @author by harry
