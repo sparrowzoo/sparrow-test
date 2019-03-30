@@ -22,7 +22,6 @@ import com.sparrow.constant.cache.KEY;
 import com.sparrow.container.Container;
 import com.sparrow.container.impl.SparrowContainerImpl;
 import com.sparrow.exception.CacheConnectionException;
-import com.sparrow.support.ModuleSupport;
 import org.junit.Test;
 
 /**

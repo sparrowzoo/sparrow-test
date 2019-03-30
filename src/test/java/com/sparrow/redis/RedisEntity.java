@@ -17,7 +17,7 @@
 
 package com.sparrow.redis;
 
-import com.sparrow.support.Entity;
+import com.sparrow.protocol.Entity;
 
 /**
  * Created by harry on 2018/1/26.

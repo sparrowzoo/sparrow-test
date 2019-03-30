@@ -31,8 +31,9 @@
 
     <properties>
         <spring.framework.version>4.2.6.RELEASE</spring.framework.version>
-        <maven.compile.source>1.7</maven.compile.source>
-        <maven.compile.target>1.7</maven.compile.target>
+        <maven.compile.source>1.8</maven.compile.source>
+        <maven.compile.target>1.8</maven.compile.target>
+        <tomcat.version>7.0.73</tomcat.version>
     </properties>
 
     <dependencies>
@@ -89,10 +90,10 @@
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-rocketmq-client</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.sparrow</groupId>
-            <artifactId>sparrow-log</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.sparrow</groupId>-->
+        <!--<artifactId>sparrow-log</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-sharded-jedis</artifactId>
@@ -200,16 +201,15 @@
             <artifactId>h2</artifactId>
             <version>1.4.193</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.jdt/org.eclipse.jdt.core -->
-        <dependency>
-            <groupId>org.eclipse.jdt</groupId>
-            <artifactId>org.eclipse.jdt.core</artifactId>
-            <version>3.14.0</version>
-        </dependency>
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
             <version>6.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 
@@ -234,15 +234,110 @@
             <!--JDK 要用 6或 7 tomcat 8的插件会报错-->
             <!--org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException-->
             <!--TOMCAT 8 配置方法 http://blog.csdn.net/u011781521/article/details/75194071-->
+
+            <!--https://stackoverflow.com/questions/9260555/tomcat-7-in-eclipse-indigo-javax-naming-namenotfoundexception-resource-web-in/9261392#9261392-->
+            <!--https://relentlesscoding.com/2018/04/24/tomcat7-maven-plugin-invalid-byte-tag-in-constant-pool-19/-->
+
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.0-beta-1</version>
+                <version>2.2</version>
                 <configuration>
-                    <port>8080</port>
-                    <uriEncoding>UTF-8</uriEncoding>
-                    <server>tomcat6</server>
+                    <path>/</path>
+                    <port>7777</port>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.tomcat.embed</groupId>
+                        <artifactId>tomcat-embed-core</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-util</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-coyote</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-api</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-jdbc</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-dbcp</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-servlet-api</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-jsp-api</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-jasper</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-jasper-el</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-el-api</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-catalina</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-tribes</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-catalina-ha</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-annotations-api</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat</groupId>
+                        <artifactId>tomcat-juli</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat.embed</groupId>
+                        <artifactId>tomcat-embed-logging-juli</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.tomcat.embed</groupId>
+                        <artifactId>tomcat-embed-logging-log4j</artifactId>
+                        <version>${tomcat.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>

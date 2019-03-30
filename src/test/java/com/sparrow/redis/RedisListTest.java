@@ -23,7 +23,7 @@ import com.sparrow.constant.cache.KEY;
 import com.sparrow.container.Container;
 import com.sparrow.container.impl.SparrowContainerImpl;
 import com.sparrow.exception.CacheConnectionException;
-import com.sparrow.support.ModuleSupport;
+import com.sparrow.protocol.ModuleSupport;
 
 import java.util.ArrayList;
 import java.util.List;

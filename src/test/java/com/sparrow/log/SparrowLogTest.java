@@ -16,6 +16,7 @@
  */
 package com.sparrow.log;
 
+import com.sparrow.utility.DateTimeUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,6 +27,8 @@ public class SparrowLogTest {
     private static Logger logger= LoggerFactory.getLogger(SparrowLogTest.class);
 
     public static void main(String[] args) {
-        logger.error("error");
+        while (true) {
+            logger.error("error"+System.currentTimeMillis());
+        }
     }
 }

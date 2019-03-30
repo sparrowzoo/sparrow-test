@@ -4,9 +4,9 @@ import com.sparrow.constant.DATE_TIME;
 import com.sparrow.container.Container;
 import com.sparrow.core.spi.ApplicationContext;
 import com.sparrow.enums.GENDER;
-import com.sparrow.enums.STATUS_RECORD;
 import com.sparrow.orm.dao.UserDAO;
 import com.sparrow.orm.po.User;
+import com.sparrow.protocol.enums.STATUS_RECORD;
 import com.sparrow.utility.DateTimeUtility;
 import org.junit.Test;
 
@@ -35,7 +35,7 @@ public class UserDaoTest {
         user.setUpdateTime(System.currentTimeMillis());
         user.setCreateTime(System.currentTimeMillis());
         user.setSex((byte)GENDER.FEMALE.ordinal());
-        user.setStatus((byte)STATUS_RECORD.ENABLE.ordinal());
+        user.setStatus((byte) STATUS_RECORD.ENABLE.ordinal());
         Long id = userDAO.insert(user);
 
         user = userDAO.getEntity(id);

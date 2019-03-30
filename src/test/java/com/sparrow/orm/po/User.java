@@ -1,7 +1,7 @@
 package com.sparrow.orm.po;
 
 import com.sparrow.constant.CONFIG;
-import com.sparrow.support.Entity;
+import com.sparrow.protocol.Entity;
 import com.sparrow.utility.Config;
 import com.sparrow.utility.StringUtility;
 
