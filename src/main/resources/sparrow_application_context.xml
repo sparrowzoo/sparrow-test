@@ -21,7 +21,7 @@
     <bean name="cookieUtility" class="com.sparrow.support.web.CookieUtility">
         <property name="cacheClient" ref="cacheClient"/>
     </bean>
-    <bean name="sparrow_default" class="com.sparrow.datasource.ConnectionPool" constructor-arg="sparrow_default">
+    <bean name="sparrow_default" class="com.sparrow.datasource.ConnectionPool">
         <property name="dataSourceFactory" ref="dataSourceFactory"/>
     </bean>
     <bean name="helloController" class="com.sparrow.controller.HelloController" controller="true"/>
