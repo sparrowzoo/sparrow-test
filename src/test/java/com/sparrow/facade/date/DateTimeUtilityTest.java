@@ -28,6 +28,9 @@ import java.util.Calendar;
  * Created by harry on 2018/1/23.
  */
 public class DateTimeUtilityTest {
+
+
+
     @Test
     public void floor() {
         Calendar calendar = Calendar.getInstance();
@@ -71,6 +74,15 @@ public class DateTimeUtilityTest {
         Long time = calendar.getTimeInMillis();
         calendar.setTimeInMillis(time + DATE_TIME.MILLISECOND_UNIT.get(DATE_TIME_UNIT.DAY) * 2);
         System.out.println("Interval  " + DateTimeUtility.getInterval(time, calendar.getTimeInMillis(), DATE_TIME_UNIT.HOUR));
+    }
+
+
+    @Test
+    public void expireRounding(){
+        Long t=1555298987703L;
+        System.out.println(DateTimeUtility.roundingExpire(t,1000*60L*60L));
+        t+=1000*60L*30L;
+        System.out.println(DateTimeUtility.roundingExpire(t,1000*60L*60L));
     }
 
     @Test
