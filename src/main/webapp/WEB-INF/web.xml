@@ -7,7 +7,7 @@
     <!--ioc 容器的location地址 可以缺省，默认为beans.xml 不要加classpath:-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/sparrow_application_context.xml</param-value>
+        <param-value>/beans.xml</param-value>
     </context-param>
     <!--默认的全局配置文件 可以缺少，默认为 /system_config.properties 不要加classpath:-->
     <context-param>
