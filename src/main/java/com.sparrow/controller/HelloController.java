@@ -3,7 +3,7 @@ package com.sparrow.controller;
 import com.sparrow.mvc.RequestParameters;
 import com.sparrow.protocol.BusinessException;
 import com.sparrow.vo.HelloVO;
-import com.sparrow.web.support.ViewWithModel;
+import com.sparrow.protocol.mvn.ViewWithModel;
 
 /**
  * @author harry
