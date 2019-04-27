@@ -17,7 +17,7 @@
 
 package com.sparrow.facade.unzip;
 
-import com.sparrow.constant.CONSTANT;
+import com.sparrow.protocol.constant.CONSTANT;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
