@@ -1,7 +1,7 @@
 package com.sparrow.orm.po;
 
 import com.sparrow.constant.CONFIG;
-import com.sparrow.protocol.Entity;
+import com.sparrow.protocol.POJO;
 import com.sparrow.utility.Config;
 import com.sparrow.utility.StringUtility;
 
@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Table(name = "user")
-public class User implements Entity, Cloneable {
+public class User implements POJO, Cloneable {
     /*-------基本信息-------------*/
     private Long userId;
     private String userName;

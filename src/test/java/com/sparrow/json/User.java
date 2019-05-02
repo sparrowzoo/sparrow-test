@@ -18,14 +18,14 @@
 package com.sparrow.json;
 
 
-import com.sparrow.protocol.Entity;
+import com.sparrow.protocol.POJO;
 
 import java.util.Map;
 
 /**
  * Created by harry on 2015/5/13.
  */
-public class User implements Entity {
+public class User implements POJO {
     public User() {
     }
 

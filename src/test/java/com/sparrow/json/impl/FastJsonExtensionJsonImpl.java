@@ -21,7 +21,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.util.ParameterizedTypeImpl;
 import com.google.gson.Gson;
 import com.sparrow.json.Json;
-import com.sparrow.protocol.Entity;
+import com.sparrow.protocol.POJO;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class FastJsonExtensionJsonImpl implements Json {
     @Override
-    public String toString(Entity model) {
+    public String toString(POJO model) {
         return JSON.toJSONString(model);
     }
 

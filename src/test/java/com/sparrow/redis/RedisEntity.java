@@ -17,12 +17,12 @@
 
 package com.sparrow.redis;
 
-import com.sparrow.protocol.Entity;
+import com.sparrow.protocol.POJO;
 
 /**
  * Created by harry on 2018/1/26.
  */
-public class RedisEntity implements Entity {
+public class RedisEntity implements POJO {
 
     public RedisEntity(Integer id, String name) {
         this.id = id;
