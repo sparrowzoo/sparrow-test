@@ -17,7 +17,7 @@
 
 package com.sparrow.facade.beans;
 
-import com.sparrow.protocol.Entity;
+import com.sparrow.protocol.POJO;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -25,7 +25,7 @@ import java.util.Date;
 /**
  * Created by harry on 16/9/7.
  */
-public class Source implements Entity {
+public class Source implements POJO {
     private Long userId;
     private String name;
     private Date birthday;

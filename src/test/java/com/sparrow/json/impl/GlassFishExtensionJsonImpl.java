@@ -21,7 +21,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sparrow.json.Json;
-import com.sparrow.protocol.Entity;
+import com.sparrow.protocol.POJO;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.Map;
  * @author by harry
  */
 public class GlassFishExtensionJsonImpl implements Json {
-    @Override public String toString(Entity model) {
+    @Override public String toString(POJO model) {
         return JSON.toJSONString(model);
     }
 

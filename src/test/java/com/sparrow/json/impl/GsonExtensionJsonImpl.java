@@ -20,7 +20,7 @@ package com.sparrow.json.impl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sparrow.json.Json;
-import com.sparrow.protocol.Entity;
+import com.sparrow.protocol.POJO;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class GsonExtensionJsonImpl implements Json {
     @Override
-    public String toString(Entity model) {
+    public String toString(POJO model) {
         Gson gson = new Gson();
         return gson.toJson(model);
     }

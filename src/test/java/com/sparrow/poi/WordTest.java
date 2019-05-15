@@ -7,6 +7,7 @@ import org.apache.poi.hwpf.usermodel.*;
 import org.apache.poi.xwpf.usermodel.*;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.*;
 
 /**
@@ -15,35 +16,49 @@ import java.util.*;
  * @description:
  */
 public class WordTest {
+    private static int pictureSize = 1;
+
     public static void main(String[] args) {
         Map<String, String> map = new HashMap<>();
-        map.put("钱怡", "钱钱2222");
-        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/yingjiesheng.doc"
-                , "/Users/harry/install-workspace/简历/模板/yingjiesheng-desc.doc",
+        map.put("孙健", "孙键2");
+        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/zhilian-21100-4210-zhilian.doc"
+                , "/Users/harry/install-workspace/简历/模板/zhilian-21100-4210-zhilian-desc.doc",
                 map);
-
         map.clear();
+
         map.put("钱怡", "钱钱2222");
-        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/lagou.doc"
-                , "/Users/harry/install-workspace/简历/模板/lagou-desc.doc",
+        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/zhilian-21100-4210-zhilian-desc.doc"
+                , "/Users/harry/install-workspace/简历/模板/zhilian-21100-4210-zhilian-desc2.doc",
                 map);
-
-
         map.clear();
-        map.put("钱怡", "钱钱2222");
-        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/guangxirencai.doc"
-                , "/Users/harry/install-workspace/简历/模板/guangxirencai-desc.doc",
-                map);
 
-
-        map.clear();
-        map.put("钱怡", "钱钱2222");
-        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/hr800.doc"
-                , "/Users/harry/install-workspace/简历/模板/hr800-desc.doc",
-                map);
-
-
-
+//        pictureSize = 1;
+//        map.put("钱怡", "钱钱2222");
+//        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/yingjiesheng.doc"
+//                , "/Users/harry/install-workspace/简历/模板/yingjiesheng-desc.doc",
+//                map);
+//
+//
+//        pictureSize = 1;
+//        map.clear();
+//        map.put("钱怡", "钱钱2222");
+//        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/lagou.doc"
+//                , "/Users/harry/install-workspace/简历/模板/lagou-desc.doc",
+//                map);
+//
+//        pictureSize = 1;
+//        map.clear();
+//        map.put("钱怡", "钱钱2222");
+//        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/guangxirencai.doc"
+//                , "/Users/harry/install-workspace/简历/模板/guangxirencai-desc.doc",
+//                map);
+//
+//        pictureSize = 1;
+//        map.clear();
+//        map.put("钱怡", "钱钱2222");
+//        replaceAndGenerateWord("/Users/harry/install-workspace/简历/模板/hr800.doc"
+//                , "/Users/harry/install-workspace/简历/模板/hr800-desc.doc",
+//                map);
 
 
     }
@@ -124,46 +139,17 @@ public class WordTest {
 
 
                         for (int i = 0; i < pictures.size(); i++) {
-
                             Picture picture = pictures.get(i);
                             pictureMap.put(picture.getStartOffset(), picture);
-                            System.out.println(picture.getStartOffset());
-                            //document.delete(picture.getStartOffset(),picture.getSize());
                             picture.writeImageContent(new FileOutputStream(new File("/Users/harry/install-workspace/简历/模板/lagou/p" + i + ".jpg")));
                         }
-                        document.getHeaderStoryRange().delete();
-                        document.getFootnoteRange().delete();
-                        document.getCommentsRange().delete();
-                        document.getEndnoteRange().delete();
-                        document.getMainTextboxRange().delete();
 
-                        System.out.println(document.getRange().numParagraphs());
-                        for (int i = 0; i < 1; i++) {
-                            Paragraph paragraph = document.getRange().getParagraph(i);
 
-                            System.out.println(document.getRange().getParagraph(i));
-                            System.out.println(paragraph.numSections());
-                            //document.getRange().getParagraph(i).delete();
-                        }
-                        System.out.println(document.getRange().numSections());
-                        for (int i = 0; i < document.getRange().numSections(); i++) {
-                            System.out.println(document.getRange().getSection(i));
-                            System.out.println(document.getRange().getSection(i).numParagraphs());
-                            //document.getRange().getSection(i).delete();
-                        }
-                        System.out.println(document.getRange().numCharacterRuns());
-
-                        list(document.getRange(), document);
+                        list(document, map);
 
                         //deletingRuns.iterator().next().delete();
+                        deletingRuns.clear();
 
-                        Range range = document.getRange();
-
-
-                        for (Map.Entry<String, String> entry : map.entrySet()) {
-                            range.replaceText(entry.getKey(), entry.getValue());
-                            System.out.println(range.type());
-                        }
                         FileOutputStream outStream = null;
                         outStream = new FileOutputStream(destPath);
                         document.write(outStream);
@@ -184,21 +170,40 @@ public class WordTest {
         }
     }
 
-    private static void list(Range parent, HWPFDocument document) {
-        for(int i=0;i<parent.numSections();i++){
-            Section section =parent.getSection(i);
-            for(int j=0;j<section.numParagraphs();j++){
-                Paragraph paragraph=section.getParagraph(j);
+    private static void list(HWPFDocument document, Map<String, String> map) throws UnsupportedEncodingException {
 
-                for(int k=0;k<paragraph.numCharacterRuns();k++){
-                    CharacterRun run=paragraph.getCharacterRun(k);
-                    if(document.getPicturesTable().hasPicture(run)){
-                        Picture picture=document.getPicturesTable().extractPicture(run,true);
-                        run.delete();
+
+        Range parent = document.getRange();
+
+        for (int i = 0; i < parent.numSections(); i++) {
+            Section section = parent.getSection(i);
+            for (int j = 0; j < section.numParagraphs(); j++) {
+                Paragraph paragraph = section.getParagraph(j);
+
+                for (int k = 0; k < paragraph.numCharacterRuns(); k++) {
+                    CharacterRun run = paragraph.getCharacterRun(k);
+//                    for (Map.Entry<String, String> entry : map.entrySet()) {
+//                        run.replaceText(entry.getKey(), entry.getValue());
+//                    }
+                    if (document.getPicturesTable().hasPicture(run)) {
+
+                        Picture picture = document.getPicturesTable().extractPicture(run, true);
+                        String picturename = picture.suggestFullFileName();
+                        if (picturename.equals("0.png")) {
+                            String s = " ";
+                            byte[] b = s.getBytes();//编码
+                            String sa = new String(b, "utf-8");
+                            run.replaceText(sa,false);
+                            //run.delete();
+                        }
                     }
                 }
             }
         }
+        document.getHeaderStoryRange().delete();
+        document.getFootnoteRange().delete();
+        document.getCommentsRange().delete();
+        document.getEndnoteRange().delete();
+        document.getMainTextboxRange().delete();
     }
-
 }
