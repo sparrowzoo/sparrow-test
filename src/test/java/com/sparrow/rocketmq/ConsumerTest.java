@@ -18,7 +18,7 @@
 package com.sparrow.rocketmq;
 
 import com.sparrow.container.Container;
-import com.sparrow.container.impl.SparrowContainerImpl;
+import com.sparrow.container.impl.SparrowContainer;
 import org.junit.Test;
 
 /**
@@ -27,8 +27,8 @@ import org.junit.Test;
 public class ConsumerTest {
     @Test
     public void start() {
-        Container container = new SparrowContainerImpl("/sparrow_rocketmq_consumer.xml");
-        container.init();
+        Container container = new SparrowContainer();
+        container.init("/sparrow_rocketmq_consumer.xml","");
         container.getBean("mqConsumer");
         while (true){}
     }

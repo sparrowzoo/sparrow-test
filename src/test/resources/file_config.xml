@@ -17,7 +17,7 @@
   -->
 
 <!DOCTYPE beans PUBLIC "-//sparrow Framework//DTD ioc Configuration//EN"
-        "http://www.sparrowzoo.com/dtds/beanFactory.dtd">
+    "beans.dtd">
 <beans>
     <bean name="fileService" class="com.sparrow.io.impl.JDKFileService"/>
 </beans>

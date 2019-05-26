@@ -17,7 +17,6 @@
 package com.sparrow.orm;
 
 import com.sparrow.container.Container;
-import com.sparrow.container.impl.SparrowContainerImpl;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 

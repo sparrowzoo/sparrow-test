@@ -20,11 +20,10 @@ package com.sparrow.rocketmq;
 import com.sparrow.constant.cache.KEY;
 import com.sparrow.constant.cache.key.KEY_FORUM;
 import com.sparrow.container.Container;
-import com.sparrow.container.impl.SparrowContainerImpl;
+import com.sparrow.container.impl.SparrowContainer;
 import com.sparrow.mq.MQPublisher;
 import com.sparrow.rocketmq.protocol.event.HelloEvent;
 import com.sparrow.support.latch.DistributedCountDownLatch;
-import org.junit.Test;
 
 /**
  * Created by harry on 2017/6/14.
@@ -32,8 +31,8 @@ import org.junit.Test;
 public class PublisherTest {
     public static void main(String[] args) {
         KEY productKey = new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(2).build();
-        Container container = new SparrowContainerImpl("/sparrow_rocketmq_producer.xml");
-        container.init();
+        Container container = new SparrowContainer();
+        container.init("/sparrow_rocketmq_producer.xml","");
         MQPublisher mqPublisher = container.getBean("mqPublisher");
         DistributedCountDownLatch distributedCountDownLatch=container.getBean("distributedCountDownLatch");
         HelloEvent helloEvent = new HelloEvent();

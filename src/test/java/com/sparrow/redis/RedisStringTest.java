@@ -21,7 +21,7 @@ import com.sparrow.cache.CacheClient;
 import com.sparrow.cache.CacheDataNotFound;
 import com.sparrow.constant.cache.KEY;
 import com.sparrow.container.Container;
-import com.sparrow.container.impl.SparrowContainerImpl;
+import com.sparrow.container.impl.SparrowContainer;
 import com.sparrow.exception.CacheConnectionException;
 import com.sparrow.protocol.ModuleSupport;
 
@@ -32,7 +32,7 @@ public class RedisStringTest {
     private static CacheClient client;
 
     public static void main(String[] args) throws CacheConnectionException {
-        Container container = new SparrowContainerImpl("/redis_config.xml");
+        Container container = new SparrowContainer();
         //定义模块，一个业务会存在多个模块
         ModuleSupport OD = new ModuleSupport() {
             @Override
@@ -48,7 +48,7 @@ public class RedisStringTest {
 
         //相同模块下会存在多个业务
         KEY.Business od = new KEY.Business(OD, "POOL");
-        container.init();
+        container.init("/redis_config.xml","");
         client = container.getBean("cacheClient");
         //相同业务下存在多个KEY
         KEY key = new KEY.Builder().business(od).businessId("BJS", "CHI", "HU").build();

@@ -18,6 +18,22 @@ import java.util.Map;
 public class SparingContainerImpl implements Container {
     private ApplicationContext applicationContext;
 
+    @Override public FactoryBean getSingletonRegister() {
+        return null;
+    }
+
+    @Override public FactoryBean getControllerRegister() {
+        return null;
+    }
+
+    @Override public FactoryBean getProxyBeanRegister() {
+        return null;
+    }
+
+    @Override public FactoryBean getInterceptorRegister() {
+        return null;
+    }
+
     @Override
     public MethodAccessor getProxyBean(Class<?> clazz) {
         return null;
@@ -44,11 +60,6 @@ public class SparingContainerImpl implements Container {
     }
 
     @Override
-    public Map<String, Object> getAllBean() {
-        return null;
-    }
-
-    @Override
     public void init() {
         applicationContext = new XmlWebApplicationContext();
     }
@@ -56,10 +67,5 @@ public class SparingContainerImpl implements Container {
     @Override
     public void init(String xmlName, String systemConfigPath) {
 
-    }
-
-    @Override
-    public Map<String, Object> getBeanMap(CONTAINER container) {
-        return null;
     }
 }
