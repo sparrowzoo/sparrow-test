@@ -4,6 +4,9 @@
     <title>welcome to java sparrow framework mvc</title>
 </head>
 <body>
+
+<h1>com from server ［ ${helloVO.hello}］</h1>
+
 <h1>hi</h1>
 welcome to java sparrow framework mvc
 你可以直接访问jsp文件 毛配置都不用!!!

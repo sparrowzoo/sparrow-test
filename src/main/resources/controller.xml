@@ -4,6 +4,7 @@
 <mvc>
     <!--在bean context中定义-->
     <class name="helloController">
+        <action name="/template/welcome.jsp" method="welcome"/>
         <!---一定以 /开头-->
         <action name="/hello" method="hello"/>
         <action name="/fly" method="fly"/>

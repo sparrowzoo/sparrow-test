@@ -29,4 +29,8 @@ public class HelloController {
     public HelloVO json() {
         return new HelloVO("够意思吧，json不用页面");
     }
+
+    public ViewWithModel welcome(){
+        return ViewWithModel.forward(new HelloVO("jsp page content from server ..."));
+    }
 }
