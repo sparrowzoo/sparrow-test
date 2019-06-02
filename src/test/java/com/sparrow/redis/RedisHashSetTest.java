@@ -24,6 +24,8 @@ import com.sparrow.container.Container;
 import com.sparrow.container.impl.SparrowContainer;
 import com.sparrow.exception.CacheConnectionException;
 import com.sparrow.protocol.ModuleSupport;
+
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -52,45 +54,58 @@ public class RedisHashSetTest {
         KEY key = new KEY.Builder().business(od).businessId("BJS", "CHI", "HU","HASH").build();
 
         container.init("/redis_config.xml","");
+
         CacheClient client = container.getBean("cacheClient");
-        client.key().delete(key);
-        client.hash().put(key, "field",1);
 
-        client.key().delete(key);
-        System.out.println(client.hash().getSize(key));
-
-        Map<Integer,RedisEntity> set = new TreeMap<Integer, RedisEntity>();
-        set.put(1,new RedisEntity(1,"k1"));
-        set.put(2,new RedisEntity(2,"k2"));
-        set.put(3,new RedisEntity(3,"k3"));
-        client.hash().put(key, set);
-
-        Map<Integer,RedisEntity> kv=client.hash().getAll(key,Integer.class,RedisEntity.class);
-
-        for (Integer db : kv.keySet()) {
-            System.out.println(db);
-            System.out.println(kv.get(db).getName());
-        }
-
-        System.out.println(client.hash().getSize(key));
-        client.key().delete(key);
-        Map<String,RedisEntity> fromdb = client.hash().getAll(key,String.class,RedisEntity.class, new CacheDataNotFound<Map<String,RedisEntity>>() {
+        Object o= client.hash().get(key,"field",Object.class, new CacheDataNotFound<Map<String,Object>>() {
             @Override
-            public Map<String,RedisEntity> read(KEY key) {
-                Map<String,RedisEntity> set = new TreeMap<String, RedisEntity>();
-                set.put("field",new RedisEntity(1,"f1"));
-                set.put("field2",new RedisEntity(2,"f2"));
-                set.put("field3",new RedisEntity(3,"f3"));
-                return set;
+            public Map<String,Object> read(KEY key) {
+                Map<String,Object> map=new HashMap<>();
+                map.put("field",1);
+                return map;
             }
-        });
+        },5);
 
-        for (String db : fromdb.keySet()) {
-            System.out.println(db);
-            System.out.println(fromdb.get(db).getName());
-        }
+        System.out.printf(o+"");
 
-        client.key().delete(key);
+//        client.key().delete(key);
+//        client.hash().put(key, "field",1);
+//
+//        client.key().delete(key);
+//        System.out.println(client.hash().getSize(key));
+//
+//        Map<Integer,RedisEntity> set = new TreeMap<Integer, RedisEntity>();
+//        set.put(1,new RedisEntity(1,"k1"));
+//        set.put(2,new RedisEntity(2,"k2"));
+//        set.put(3,new RedisEntity(3,"k3"));
+//        client.hash().put(key, set);
+//
+//        Map<Integer,RedisEntity> kv=client.hash().getAll(key,Integer.class,RedisEntity.class);
+//
+//        for (Integer db : kv.keySet()) {
+//            System.out.println(db);
+//            System.out.println(kv.get(db).getName());
+//        }
+//
+//        System.out.println(client.hash().getSize(key));
+//        client.key().delete(key);
+//        Map<String,RedisEntity> fromdb = client.hash().getAll(key,String.class,RedisEntity.class, new CacheDataNotFound<Map<String,RedisEntity>>() {
+//            @Override
+//            public Map<String,RedisEntity> read(KEY key) {
+//                Map<String,RedisEntity> set = new TreeMap<String, RedisEntity>();
+//                set.put("field",new RedisEntity(1,"f1"));
+//                set.put("field2",new RedisEntity(2,"f2"));
+//                set.put("field3",new RedisEntity(3,"f3"));
+//                return set;
+//            }
+//        });
+//
+//        for (String db : fromdb.keySet()) {
+//            System.out.println(db);
+//            System.out.println(fromdb.get(db).getName());
+//        }
+//
+//        client.key().delete(key);
 
     }
 }

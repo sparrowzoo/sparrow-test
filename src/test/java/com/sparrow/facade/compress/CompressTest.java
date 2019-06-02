@@ -17,8 +17,6 @@
 
 package com.sparrow.facade.compress;
 
-import com.sparrow.container.Container;
-import com.sparrow.container.impl.SparrowContainerImpl;
 import com.sparrow.support.EnvironmentSupport;
 import com.sparrow.utility.CompressUtility;
 import java.io.FileOutputStream;

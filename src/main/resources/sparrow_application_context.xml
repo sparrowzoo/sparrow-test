@@ -27,6 +27,7 @@
         <property name="dataSourceFactory" ref="dataSourceFactory"/>
     </bean>
     <bean name="helloController" class="com.sparrow.controller.HelloController" controller="true"/>
+    <bean name="elasticSearchController" class="com.sparrow.controller.ElasticSearchController" controller="true"/>
     <bean name="sparrowHandlerInterceptor" class="com.sparrow.interceptor.SparrowHandlerInterceptor"
           interceptor="true"/>
 </beans>
