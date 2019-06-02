@@ -7,6 +7,7 @@
 <a href="/elastic/search/mapping">mapping</a><br/>
 <a href="/elastic/search/analyze">analyze</a><br/>
 <a href="/elastic/search/tokenize">tokenize</a><br/>
-<a href="/elastic/search/info">info</a>
+<a href="/elastic/search/info">info</a><br/>
+<a href="/elastic/search/mapping-create">create mapping</a>
 </body>
 </html>

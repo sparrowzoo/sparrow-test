@@ -18,6 +18,6 @@
         <action name="/elastic/search/analyze.json" method="analyze"/>
         <action name="/elastic/search/tokenize.json" method="tokenize"/>
         <action name="/elastic/search/info.json" method="info"/>
-        <action name="/elastic/search/mapping_create.json" method="mappingCreate"/>
+        <action name="/elastic/search/mapping-create.json" method="mappingCreate"/>
     </controller>
 </mvc>

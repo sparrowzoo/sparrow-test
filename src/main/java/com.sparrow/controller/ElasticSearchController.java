@@ -13,7 +13,7 @@ public class ElasticSearchController {
     //http://www.bejson.com/jsonviewernew/
     private String ES_ROOT = "http://192.168.248.188:9200/";
 
-    @RequestParameters(names = "index,type,response")
+    @RequestParameters(names = "index,type")
     public void mapping(String index, String type, HttpServletResponse response) {
         String mapping = ES_ROOT + String.format("%s/_mapping/%s", index, type);
         String json = HttpClient.get(mapping);
@@ -23,7 +23,7 @@ public class ElasticSearchController {
             e.printStackTrace();
         }
     }
-    @RequestParameters(names = "analyzer,text,response")
+    @RequestParameters(names = "analyzer,text")
     public void analyze(String analyzer,String text, HttpServletResponse response){
 
         Map<String,String> parameters=new HashMap<>();
@@ -38,7 +38,7 @@ public class ElasticSearchController {
         }
     }
 
-    @RequestParameters(names = "tokenizer,text,response")
+    @RequestParameters(names = "tokenizer,text")
     public void tokenize(String tokenizer,String text, HttpServletResponse response){
         Map<String,String> parameters=new HashMap<>();
         parameters.put("tokenizer",tokenizer);
@@ -51,7 +51,6 @@ public class ElasticSearchController {
             e.printStackTrace();
         }
     }
-    @RequestParameters(names = "response")
     public void info(HttpServletResponse response){
       String infoUrl=ES_ROOT;
       String info=HttpClient.get(infoUrl);
