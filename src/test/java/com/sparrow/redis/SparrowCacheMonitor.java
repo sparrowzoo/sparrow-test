@@ -42,7 +42,8 @@ public class SparrowCacheMonitor implements CacheMonitor{
             @Override
             protected Boolean readLock(String key) {
                 //这里读性能指标，如果OK则true，如果不OK则返回false
-                return false;
+                System.out.println("check 指标true");
+                return true;
             }
         }.retryAcquireLock(key.key());
     }

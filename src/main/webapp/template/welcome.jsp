@@ -5,6 +5,8 @@
 </head>
 <body>
 
+<a href="/elastic/search/index">elastic search</a>
+
 <h1>com from server ［ ${helloVO.hello}］</h1>
 
 <h1>hi</h1>
