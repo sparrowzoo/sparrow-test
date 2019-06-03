@@ -23,14 +23,15 @@ public class ElasticSearchController {
             e.printStackTrace();
         }
     }
-    @RequestParameters(names = "analyzer,text")
-    public void analyze(String analyzer,String text, HttpServletResponse response){
 
-        Map<String,String> parameters=new HashMap<>();
-        parameters.put("analyzer",analyzer);
-        parameters.put("text",text);
-        String analyzeUrl=ES_ROOT+"_analyze?"+ StringUtility.serialParameters(parameters);
-        String json=HttpClient.get(analyzeUrl);
+    @RequestParameters(names = "analyzer,text")
+    public void analyze(String analyzer, String text, HttpServletResponse response) {
+
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("analyzer", analyzer);
+        parameters.put("text", text);
+        String analyzeUrl = ES_ROOT + "_analyze?" + StringUtility.serialParameters(parameters);
+        String json = HttpClient.get(analyzeUrl);
         try {
             response.getWriter().write(json);
         } catch (IOException e) {
@@ -39,31 +40,33 @@ public class ElasticSearchController {
     }
 
     @RequestParameters(names = "tokenizer,text")
-    public void tokenize(String tokenizer,String text, HttpServletResponse response){
-        Map<String,String> parameters=new HashMap<>();
-        parameters.put("tokenizer",tokenizer);
-        parameters.put("text",text);
-        String analyzeUrl=ES_ROOT+"_analyze?"+ StringUtility.serialParameters(parameters);
-        String json=HttpClient.get(analyzeUrl);
+    public void tokenize(String tokenizer, String text, HttpServletResponse response) {
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("tokenizer", tokenizer);
+        parameters.put("text", text);
+        String analyzeUrl = ES_ROOT + "_analyze?" + StringUtility.serialParameters(parameters);
+        String json = HttpClient.get(analyzeUrl);
         try {
             response.getWriter().write(json);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void info(HttpServletResponse response){
-      String infoUrl=ES_ROOT;
-      String info=HttpClient.get(infoUrl);
+
+    public void info(HttpServletResponse response) {
+        String infoUrl = ES_ROOT;
+        String info = HttpClient.get(infoUrl);
         try {
             response.getWriter().write(info);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @RequestParameters(names = "index,type,mapping")
-    public void mappingCreate(String index, String type,String mapping,HttpServletResponse response){
+    public void mappingCreate(String index, String type, String mapping, HttpServletResponse response) {
         String mappingUrl = ES_ROOT + String.format("%s/_mapping/%s", index, type);
-        String json = HttpClient.putJson(mappingUrl,mapping);
+        String json = HttpClient.putJson(mappingUrl, mapping);
         try {
             response.getWriter().write(json);
         } catch (IOException e) {

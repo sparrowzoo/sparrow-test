@@ -20,9 +20,9 @@ public class IKParser {
         IKParser parser=new IKParser();
         List<Lexeme> lexemes= parser.parseLexeme("中华人民共和国");
         for (Lexeme lexeme:lexemes){
-            com.sparrow.support.lucence.LexemeWithBoost lexeme1=new com.sparrow.support.lucence.LexemeWithBoost(lexeme.getOffset(),lexeme.getBegin(),lexeme.getLength(),lexeme.getLexemeType());
+            com.sparrow.support.lucence.LexemeWithBoost lexeme1=new com.sparrow.support.lucence.LexemeWithBoost(lexeme.getOffset(),lexeme.getBegin(),lexeme.getLength(),lexeme.getLexemeTypeString());
             lexeme1.setLexemeText(lexeme.getLexemeText());
-            System.out.println(lexeme1);
+            System.out.println(lexeme1.toHumanString());
         }
     }
     private static Settings defaultSetting = defaultSetting();

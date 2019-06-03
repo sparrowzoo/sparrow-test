@@ -36,7 +36,8 @@ public class RedisKeyTest {
         KEY key=new KEY.Builder().business(business).build();
 
         Container container = new SparrowContainer();
-        container.init("/redis_config.xml","");
+        container.setConfigLocation("/redis_config.xml");
+        container.init();
         CacheClient client = container.getBean("cacheClient");
         //client.string().set(key,"test");
         System.out.println(client.key().expire(key,1));

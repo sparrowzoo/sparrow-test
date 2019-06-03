@@ -53,7 +53,8 @@ public class RedisHashSetTest {
         KEY.Business od = new KEY.Business(OD, "POOL");
         KEY key = new KEY.Builder().business(od).businessId("BJS", "CHI", "HU","HASH").build();
 
-        container.init("/redis_config.xml","");
+        container.setConfigLocation("/redis_config.xml");
+        container.init();
 
         CacheClient client = container.getBean("cacheClient");
 

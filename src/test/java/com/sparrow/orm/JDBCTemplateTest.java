@@ -12,7 +12,8 @@ public class JDBCTemplateTest {
     @Test
     public void initStruction() {
         Container container = ApplicationContext.getContainer();
-        container.init("/dao.xml", null);
+        container.setConfigLocation("/dao.xml");
+        container.init();
         JDBCSupport jdbcSupport = JDBCTemplate.getInstance();
         int affectCount= jdbcSupport.executeUpdate("DROP TABLE IF EXISTS `user`;");
         affectCount=jdbcSupport.executeUpdate("CREATE TABLE `user` (\n" +
