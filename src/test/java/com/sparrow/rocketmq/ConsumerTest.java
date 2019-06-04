@@ -28,7 +28,8 @@ public class ConsumerTest {
     @Test
     public void start() {
         Container container = new SparrowContainer();
-        container.init("/sparrow_rocketmq_consumer.xml","");
+        container.setConfigLocation("/sparrow_rocketmq_consumer.xml");
+        container.init();
         container.getBean("mqConsumer");
         while (true){}
     }

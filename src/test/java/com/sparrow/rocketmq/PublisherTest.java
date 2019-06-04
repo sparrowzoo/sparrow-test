@@ -32,7 +32,8 @@ public class PublisherTest {
     public static void main(String[] args) {
         KEY productKey = new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(2).build();
         Container container = new SparrowContainer();
-        container.init("/sparrow_rocketmq_producer.xml","");
+        container.setConfigLocation("/sparrow_rocketmq_producer.xml");
+        container.init();
         MQPublisher mqPublisher = container.getBean("mqPublisher");
         DistributedCountDownLatch distributedCountDownLatch=container.getBean("distributedCountDownLatch");
         HelloEvent helloEvent = new HelloEvent();

@@ -2,6 +2,7 @@ package com.sparrow.es;
 
 import com.sparrow.support.lucence.KeyAnalyzer;
 import com.sparrow.support.lucence.LexemeWithBoost;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.env.Environment;
 import org.wltea.analyzer.cfg.Configuration;
@@ -16,16 +17,16 @@ public class KeyAnalyzerTest {
     private static final String PATH_HOME = "path.home";
 
     public static void main(String[] args) {
-        KeyAnalyzer keyAnalyzer=new KeyAnalyzer();
-       // IndexMetaData indexMetaData=new IndexMetaData();
-       // IndexSettings indexSettings=new IndexSettings(null,defaultSetting());
+        KeyAnalyzer keyAnalyzer = new KeyAnalyzer();
+        // IndexMetaData indexMetaData=new IndexMetaData();
+        // IndexSettings indexSettings=new IndexSettings(null,defaultSetting());
 
-        IKAnalyzer ikAnalyzer=new IKAnalyzer(defaultConfig);
-        keyAnalyzer.setAnalyzer(ikAnalyzer);
-       for(LexemeWithBoost lexeme:keyAnalyzer.getKeyList("我爱吃康师傅方便面")){
-           System.out.println(lexeme+"");
-       }
-     }
+        IKAnalyzer ikAnalyzer = new IKAnalyzer(defaultConfig);
+        keyAnalyzer.setAnalyzer(new StandardAnalyzer());
+        for (LexemeWithBoost lexeme : keyAnalyzer.getKeyList("我爱吃康师傅方便面")) {
+            System.out.println(lexeme.toHumanString());
+        }
+    }
 
 
     /**

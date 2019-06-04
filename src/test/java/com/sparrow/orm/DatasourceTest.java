@@ -31,7 +31,7 @@ public class DatasourceTest {
     @Test
     public void datasourceTest() throws SQLException {
         Container container= ApplicationContext.getContainer();
-        container.init("/dao.xml",null);
+        container.init();
         DataSourceFactory dataSourceFactory= container.getBean("dataSourceFactory");
         DataSource dataSource= dataSourceFactory.getDataSource();
         System.out.println(dataSource);

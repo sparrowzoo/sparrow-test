@@ -51,7 +51,8 @@ public class RedisOrderSetTest {
         KEY.Business od = new KEY.Business(OD, "POOL");
         KEY key = new KEY.Builder().business(od).businessId("BJS", "CHI", "HU","ORDER_SET").build();
 
-        container.init("/redis_config.xml","");
+        container.setConfigLocation("/redis_config.xml");
+        container.init();
         CacheClient client = container.getBean("cacheClient");
         client.key().delete(key);
         client.sortedSet().add(key, "field",1L);

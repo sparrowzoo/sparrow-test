@@ -3,7 +3,6 @@ package com.sparrow.container;
 import com.sparrow.cg.MethodAccessor;
 import com.sparrow.constant.SYS_OBJECT_NAME;
 import com.sparrow.core.TypeConverter;
-import com.sparrow.enums.CONTAINER;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 
@@ -65,7 +64,12 @@ public class SparingContainerImpl implements Container {
     }
 
     @Override
-    public void init(String xmlName, String systemConfigPath) {
+    public void setConfigLocation(String configLocation) {
+
+    }
+
+    @Override
+    public void setContextConfigLocation(String contextConfigLocation) {
 
     }
 }

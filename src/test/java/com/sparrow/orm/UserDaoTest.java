@@ -22,7 +22,8 @@ public class UserDaoTest {
         JDBCTemplateTest jdbcTemplateTest=new JDBCTemplateTest();
         jdbcTemplateTest.initStruction();
         Container container = ApplicationContext.getContainer();
-        container.init("/dao.xml", null);
+        container.setConfigLocation("/dao.xml");
+        container.init();
         UserDAO userDAO = container.getBean("userDao");
 
         User user = new User();

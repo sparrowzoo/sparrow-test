@@ -54,7 +54,8 @@ public class RedisSetTest {
         KEY.Business od = new KEY.Business(OD, "POOL");
         KEY key = new KEY.Builder().business(od).businessId("BJS", "CHI", "HU").build();
 
-        container.init("/redis_config.xml","");
+        container.setConfigLocation("/redis_config.xml");
+        container.init();
         CacheClient client = container.getBean("cacheClient");
         client.key().delete(key);
         client.set().add(key, 1);
