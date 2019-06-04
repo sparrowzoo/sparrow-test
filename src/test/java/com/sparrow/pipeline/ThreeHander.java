@@ -3,8 +3,9 @@ package com.sparrow.pipeline;
 /**
  * @author by harry
  */
-public class ThreeHander implements Handler {
-    @Override public void invoke(Object arg) {
+public class ThreeHander implements Handler<PipelineMain.PipelineData> {
+    @Override public void invoke(PipelineMain.PipelineData arg) {
+        arg.add(3);
         System.out.println(3);
     }
 }
