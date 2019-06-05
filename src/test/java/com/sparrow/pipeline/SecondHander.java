@@ -6,6 +6,6 @@ package com.sparrow.pipeline;
 public class SecondHander implements Handler<PipelineMain.PipelineData> {
     @Override public void invoke(PipelineMain.PipelineData arg) {
         arg.add(2);
-        System.out.println(2);
+        System.out.println("tid="+Thread.currentThread().getId()+"- 2");
     }
 }

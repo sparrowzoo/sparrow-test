@@ -6,6 +6,6 @@ package com.sparrow.pipeline;
 public class ThreeHander implements Handler<PipelineMain.PipelineData> {
     @Override public void invoke(PipelineMain.PipelineData arg) {
         arg.add(3);
-        System.out.println(3);
+        System.out.println("tid="+Thread.currentThread().getId()+"- 3");
     }
 }

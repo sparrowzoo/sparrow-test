@@ -6,6 +6,6 @@ package com.sparrow.pipeline;
 public class FourHander implements Handler<PipelineMain.PipelineData> {
     @Override public void invoke(PipelineMain.PipelineData arg) {
         arg.add(4);
-        System.out.println(4);
+        System.out.println("tid="+Thread.currentThread().getId()+"- 4");
     }
 }
