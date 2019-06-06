@@ -9,19 +9,15 @@
     <script type="text/javascript">
         function mapping() {
             var mappingInfo = {
-                analyzer: {
-                    ctrlId: 'sltAnalyzer'
-                },
-                text: {
-                    ctrlId: 'txtText'
-                }
+                sltAnalyzer: {},
+                txtText: {}
             };
             var postString = $.getFormData(mappingInfo);
             $.ajax.req("POST",
                 $.url.root + "/elastic/search/analyze.json",
                 function (responseText) {
-                    $("#.txtResult").value($.format(responseText));
-                }, true, postString);
+                    $("#txtResult").value($.format(responseText));
+                }, postString);
         }
     </script>
 </head>
