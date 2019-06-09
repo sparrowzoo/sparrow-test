@@ -83,7 +83,7 @@
 
     <!--TimeBasedArchiveRemover base on {yyyy-MM-dd-HH-mm-ss} periodsElapsed-->
     <appender name="rolling_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/var/log/c1/logs.log</file>
+        <file>/Users/harry/sparrow/sparrow-shell/logs/logs.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>/Users/harry/sparrow/sparrow-shell/logs/logs.%d{yyyy-MM-dd-HH-mm}.%i.log</fileNamePattern>
             <maxFileSize>10MB</maxFileSize>

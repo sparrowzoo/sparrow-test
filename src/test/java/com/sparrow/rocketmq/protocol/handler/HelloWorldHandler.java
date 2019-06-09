@@ -31,7 +31,7 @@ public class HelloWorldHandler extends AbstractSpringMQHandler<HelloEvent>{
     }
 
     public void handle(HelloEvent event) throws Throwable {
-        System.out.println(event.getMessage());
+        System.out.println(Thread.currentThread().getName()+"---"+event.getMessage());
     }
 
     @Override
