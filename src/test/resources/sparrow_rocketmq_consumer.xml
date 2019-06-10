@@ -59,7 +59,7 @@
         <property name="batchSize" value="100"/>
         <property name="pullSize" value="1000"/>
         <property name="pullInterval" value="10000"/>
-        <property name="threadCount" value="1"/>
+        <property name="threadCount" value="2"/>
     </bean>
 
     <bean name="helloHandler" class="com.sparrow.rocketmq.protocol.handler.HelloWorldHandler">
