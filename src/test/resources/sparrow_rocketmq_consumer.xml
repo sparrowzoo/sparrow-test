@@ -56,6 +56,10 @@
         <property name="messageListener" ref="rocketMQMessageListener"/>
         <property name="nameServerAddress" value="127.0.0.1:9876"/>
         <property name="cacheClient" ref="cacheClient"/>
+        <property name="batchSize" value="100"/>
+        <property name="pullSize" value="1000"/>
+        <property name="pullInterval" value="10000"/>
+        <property name="threadCount" value="1"/>
     </bean>
 
     <bean name="helloHandler" class="com.sparrow.rocketmq.protocol.handler.HelloWorldHandler">

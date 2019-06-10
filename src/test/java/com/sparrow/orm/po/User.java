@@ -73,7 +73,7 @@ public class User implements POJO, Cloneable {
     @Column(name = "avatar", updatable = false)
     public String getAvatar() {
         if (StringUtility.isNullOrEmpty(this.avatar)) {
-            this.avatar = Config.getValue(CONFIG.DEFAULT_USER_HEAD);
+            this.avatar = Config.getValue(CONFIG.DEFAULT_AVATAR);
         }
         return avatar;
     }
