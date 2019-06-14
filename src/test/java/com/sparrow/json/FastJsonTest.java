@@ -2,10 +2,10 @@ package com.sparrow.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.alibaba.fastjson.parser.Feature;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.sparrow.constant.SPARROW_ERROR;
+import com.sparrow.json.impl.FastJsonExtensionJsonImpl;
+import com.sparrow.protocol.BusinessException;
+import com.sparrow.protocol.Result;
 
 /**
  * @author: zhanglizhi01@meicai.cn
@@ -14,13 +14,19 @@ import java.util.List;
  */
 public class FastJsonTest {
     public static void main(String[] args) {
-        List<Long> ids=new ArrayList<>();
-        ids.add(1L);
-        ids.add(2L);
-        System.out.println(JSON.toJSONString(ids));
-        ids=JSON.parseObject(JSON.toJSONString(ids),new TypeReference<List<Long>>(){});
-        for(Long id:ids){
-            System.out.println(id);
-        }
+
+        User user=new User();
+        user.setUserId("1");
+        user.setUserName("userName");
+        Result<User> result=Result.FAIL(new BusinessException(SPARROW_ERROR.GLOBAL_DB_ADD_ERROR));
+
+        String jsonString= JSON.toJSONString(result);
+        System.out.println(JSON.toJSONString(result));
+
+        result=JSON.parseObject(JSON.toJSONString(result),new TypeReference<Result<User>>(){});
+
+
+        result= JSON.parseObject(jsonString,new TypeReference<Result<User>>(){});
+        System.out.println(result.getData().getUserName());
     }
 }
