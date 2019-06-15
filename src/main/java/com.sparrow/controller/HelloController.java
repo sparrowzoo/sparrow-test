@@ -21,7 +21,7 @@ public class HelloController {
         return ViewWithModel.transit("transit-here", new HelloVO("我从你这歇一会，最终我要到transit-here"));
     }
 
-    @RequestParameters(names = "threadId,pageIndex")
+    @RequestParameters("threadId,pageIndex")
     public ViewWithModel thread(Long threadId, Integer pageIndex) {
         return ViewWithModel.forward("thread", new HelloVO("服务器的thread" + threadId + "-" + pageIndex));
     }
