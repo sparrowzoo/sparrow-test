@@ -31,14 +31,18 @@
     </bean>
 
 
-    <bean name="dataSourceFactory" class="com.sparrow.datasource.DataSourceFactoryImpl"
-          constructor-arg="sparrow_default"/>
-    <bean name="connectionContextHolder" class="com.sparrow.datasource.ConnectionContextHolderImpl">
-        <property name="dataSourceFactory" ref="dataSourceFactory"/>
+
+    <bean name="dataSourceFactory" class="com.sparrow.datasource.DataSourceFactoryImpl">
+        <constructor-arg index="1" name="sparrow_default" value="sparrow_default"/>
     </bean>
+
     <bean name="sparrow_default" class="com.sparrow.datasource.ConnectionPool">
         <property name="dataSourceFactory" ref="dataSourceFactory"/>
     </bean>
+    <bean name="connectionContextHolder" class="com.sparrow.datasource.ConnectionContextHolderImpl">
+        <property name="dataSourceFactory" ref="dataSourceFactory"/>
+    </bean>
+
 
     <!--必须定义，且必须为prototype-->
     <bean name="user" class="com.sparrow.orm.po.User" scope="prototype"/>

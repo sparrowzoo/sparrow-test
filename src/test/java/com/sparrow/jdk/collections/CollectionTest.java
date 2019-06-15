@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CollectionTest {
     public static void main(String[] args) {
-
+        System.out.println(Integer.MAX_VALUE);
         Map<Integer,Object> map=new ConcurrentHashMap<>();
         for(int i=0;i<10000000;i++){
             map.put(i,i);

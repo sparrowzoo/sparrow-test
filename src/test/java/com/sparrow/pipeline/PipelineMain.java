@@ -25,7 +25,7 @@ public class PipelineMain {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    HandlerPipeline handlerPipeline = new SimpleHandlerPipeline(false);
+                    HandlerPipeline handlerPipeline = new SimpleHandlerPipeline(true);
                     handlerPipeline.add(new FirstHandler());
                     handlerPipeline.add(new SecondHander());
                     handlerPipeline.add(new ThreeHander());
