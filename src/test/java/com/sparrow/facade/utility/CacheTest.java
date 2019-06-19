@@ -1,6 +1,6 @@
 package com.sparrow.facade.utility;
 
-import com.sparrow.core.Cache;
+import com.sparrow.core.cache.Cache;
 
 import java.util.HashMap;
 import java.util.Map;
