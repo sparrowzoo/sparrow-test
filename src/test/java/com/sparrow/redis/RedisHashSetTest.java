@@ -58,16 +58,7 @@ public class RedisHashSetTest {
 
         CacheClient client = container.getBean("cacheClient");
 
-        Object o= client.hash().get(key,"field",Object.class, new CacheDataNotFound<Map<String,Object>>() {
-            @Override
-            public Map<String,Object> read(KEY key) {
-                Map<String,Object> map=new HashMap<>();
-                map.put("field",1);
-                return map;
-            }
-        },5);
 
-        System.out.printf(o+"");
 
 //        client.key().delete(key);
 //        client.hash().put(key, "field",1);
