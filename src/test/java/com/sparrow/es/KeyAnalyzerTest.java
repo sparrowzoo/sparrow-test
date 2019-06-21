@@ -22,9 +22,9 @@ public class KeyAnalyzerTest {
         // IndexSettings indexSettings=new IndexSettings(null,defaultSetting());
 
         IKAnalyzer ikAnalyzer = new IKAnalyzer(defaultConfig);
-        keyAnalyzer.setAnalyzer(new StandardAnalyzer());
-        for (LexemeWithBoost lexeme : keyAnalyzer.getKeyList("我爱吃康师傅方便面")) {
-            System.out.println(lexeme.toHumanString());
+        keyAnalyzer.setAnalyzer(ikAnalyzer);
+        for (LexemeWithBoost lexeme : keyAnalyzer.getKeyList("我早上早餐喜欢吃康师傅方便面")) {
+            System.out.println(lexeme.toString());
         }
     }
 
@@ -47,6 +47,9 @@ public class KeyAnalyzerTest {
         String pathHome = System.getProperty("web.root");
         if (null == pathHome || pathHome.trim().isEmpty())
             throw new IllegalArgumentException("load defaultSetting error!" + PATH_HOME + " can't be null!");
-        return Settings.builder().put(PATH_HOME, pathHome + "/classes").build();
+        //this.useSmart = settings.get("use_smart", "false").equals("true");
+//.put("use_smart",true)
+        return Settings.builder().put(PATH_HOME, pathHome + "/classes")
+                .build();
     }
 }

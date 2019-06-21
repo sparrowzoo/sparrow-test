@@ -25,12 +25,12 @@ public class PipelineMain {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    HandlerPipeline handlerPipeline = new SimpleHandlerPipeline(true);
-                    handlerPipeline.add(new FirstHandler());
+                    HandlerPipeline handlerPipeline = new SimpleHandlerPipeline(false);
+                    handlerPipeline.addAsyc(new FirstHandler());
                     handlerPipeline.add(new SecondHander());
-                    handlerPipeline.add(new ThreeHander());
+                    handlerPipeline.addAsyc(new ThreeHander());
                     handlerPipeline.add(new FourHander());
-                    handlerPipeline.add(new FiveHander());
+                    handlerPipeline.addAsyc(new FiveHander());
                     PipelineData data = new PipelineData();
                     handlerPipeline.fire(data);
                     //System.out.println(data.getData());
