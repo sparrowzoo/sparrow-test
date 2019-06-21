@@ -1,10 +1,17 @@
 package com.sparrow.pipeline;
 
+import org.apache.poi.ss.formula.functions.T;
+
+import java.util.concurrent.CountDownLatch;
+
 /**
  * @author by harry
  */
 public class PipelineMain {
-    static class PipelineData {
+    static class PipelineData implements PipelineAsyncData {
+
+
+        private CountDownLatch countDownLatch;
         private int data = 0;
 
         public void add(int n) {
@@ -18,25 +25,45 @@ public class PipelineMain {
         public void setData(int data) {
             this.data = data;
         }
+
+        @Override
+        public void initLatch(int count) {
+            this.countDownLatch = new CountDownLatch(count);
+        }
+
+        @Override
+        public CountDownLatch getCountDownLatch() {
+            return countDownLatch;
+        }
+
+        @Override
+        public void latch() throws InterruptedException {
+            countDownLatch.await();
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {
-        for(int i=0;i<1;i++) {
-            new Thread(new Runnable() {
+        HandlerPipeline handlerPipeline = new SimpleHandlerPipeline(false);
+        handlerPipeline.add(new FirstHandler());
+        handlerPipeline.add(new SecondHander());
+        handlerPipeline.add(new ThreeHander());
+        handlerPipeline.addAsync(new FourHander());
+        handlerPipeline.addAsync(new FiveHander());
+        for (int i = 0; i < 1; i++) {
+           new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    HandlerPipeline handlerPipeline = new SimpleHandlerPipeline(false);
-                    handlerPipeline.addAsyc(new FirstHandler());
-                    handlerPipeline.add(new SecondHander());
-                    handlerPipeline.addAsyc(new ThreeHander());
-                    handlerPipeline.add(new FourHander());
-                    handlerPipeline.addAsyc(new FiveHander());
                     PipelineData data = new PipelineData();
-                    handlerPipeline.fire(data);
-                    //System.out.println(data.getData());
+                    try {
+                        handlerPipeline.fire(data);
+                        System.out.println("end"+data.getData());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }).run();
+            }).start();
         }
-        Thread.sleep(10000);
+        System.out.println("over");
+       // Thread.sleep(10000);
     }
 }
