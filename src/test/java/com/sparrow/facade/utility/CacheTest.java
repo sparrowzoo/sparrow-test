@@ -1,13 +1,13 @@
 package com.sparrow.facade.utility;
 
-import com.sparrow.core.cache.Cache;
+import com.sparrow.core.cache.CacheBack;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CacheTest {
     public static void main(String[] args) {
-        Cache cache=Cache.getInstance();
+        CacheBack cache= CacheBack.getInstance();
         Map<String,Object> map=new HashMap<>();
         map.put("k1","v1");
         cache.put("K1",map);
