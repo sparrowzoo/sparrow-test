@@ -31,12 +31,12 @@ public class FileTester {
         double recordCount = 200000000;
         double recordSize = recordCount * 4;
 
-        System.out.println("数据总量" + FileUtility.getInstance().getFileLength(recordSize));
+        System.out.println("数据总量" + FileUtility.getInstance().getHumanReadableFileLength(recordSize));
 
         int second = 60 * 60 * 4;
 
         System.out.println("tps" + recordCount / second);
 
-        System.out.println("每秒数据量" + FileUtility.getInstance().getFileLength(recordSize / second));
+        System.out.println("每秒数据量" + FileUtility.getInstance().getHumanReadableFileLength(recordSize / second));
     }
 }
