@@ -28,8 +28,8 @@ public class FileTester {
         MessageSignature messageSignature=new MessageSignature();
         System.out.println(messageSignature.md5("12345"));
 
-        double recordCount = 200000000;
-        double recordSize = recordCount * 4;
+        long recordCount = 200000000;
+        long recordSize = recordCount * 4;
 
         System.out.println("数据总量" + FileUtility.getInstance().getHumanReadableFileLength(recordSize));
 
