@@ -83,16 +83,21 @@
 
     <!--TimeBasedArchiveRemover base on {yyyy-MM-dd-HH-mm-ss} periodsElapsed-->
     <appender name="rolling_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/Users/harry/sparrow/sparrow-shell/logs/logs.log</file>
+        <file>d://sparrow-shell/logs/logs.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>/Users/harry/sparrow/sparrow-shell/logs/logs.%d{yyyy-MM-dd-HH-mm}.%i.log</fileNamePattern>
-            <maxFileSize>10MB</maxFileSize>
-            <maxHistory>30</maxHistory>
+            <fileNamePattern>d://sparrow-shell/logs/logs.%d{yyyy-MM-dd-HH-mm-ss}.%i.log</fileNamePattern>
+            <maxFileSize>100B</maxFileSize>
+            <maxHistory>10</maxHistory>
             <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
     </appender>
 
 

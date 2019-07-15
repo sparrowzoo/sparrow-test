@@ -26,6 +26,8 @@ public class SparrowLogTest {
     private static Logger logger = LoggerFactory.getLogger(SparrowLogTest.class);
 
     public static void main(String[] args) {
-        logger.error("{}", "{sfsfsf},{}{}", "sfsf");
+        while (true) {
+            logger.error("{}", "{sfsfsf},{}{}", "sfsf");
+        }
     }
 }

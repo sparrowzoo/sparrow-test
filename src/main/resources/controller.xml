@@ -20,4 +20,8 @@
         <action name="/elastic/search/info.json" method="info"/>
         <action name="/elastic/search/mapping-create.json" method="mappingCreate"/>
     </controller>
+
+    <controller id="classLoaderController">
+        <action name="/class-loader/get-parent" method="getParent"/>
+    </controller>
 </mvc>

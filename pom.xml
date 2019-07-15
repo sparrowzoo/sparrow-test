@@ -215,6 +215,10 @@
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch-analysis-ik</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

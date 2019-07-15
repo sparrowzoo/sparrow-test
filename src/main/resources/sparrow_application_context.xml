@@ -30,4 +30,6 @@
     <bean name="elasticSearchController" class="com.sparrow.controller.ElasticSearchController" controller="true"/>
     <bean name="sparrowHandlerInterceptor" class="com.sparrow.interceptor.SparrowHandlerInterceptor"
           interceptor="true"/>
+
+    <bean name="classLoaderController" class="com.sparrow.controller.ClassLoaderController" controller="true"/>
 </beans>
