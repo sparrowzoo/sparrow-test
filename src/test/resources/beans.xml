@@ -20,6 +20,23 @@
     "beans.dtd">
 <beans>
 
+
+    <!---当前进程的所有datasource实例-->
+    <bean name="dataSourceFactory" class="com.sparrow.datasource.DataSourceFactoryImpl">
+        <constructor-arg index="1" name="initDatasourceKeys" value="sparrow_default" type="string"/>
+    </bean>
+    <bean name="connectionContextHolder" class="com.sparrow.datasource.ConnectionContextHolderImpl">
+        <property name="dataSourceFactory" ref="dataSourceFactory"/>
+    </bean>
+
+
+    <bean name="sparrowServletContainer" class="com.sparrow.web.support.SparrowServletContainer"/>
+    <bean name="cookieUtility" class="com.sparrow.support.web.CookieUtility">
+        <property name="cacheClient" ref="cacheClient"/>
+    </bean>
+    <bean name="sparrow_default" class="com.sparrow.datasource.ConnectionPool">
+        <property name="dataSourceFactory" ref="dataSourceFactory"/>
+    </bean>
     <import resource="sparrow_rocketmq_producer.xml"/>
     <import resource="sparrow_rocketmq_consumer.xml"/>
 
