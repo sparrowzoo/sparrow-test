@@ -1,7 +1,5 @@
 package com.sparrow.jdk.refer;
 
-import com.sparrow.utility.FileUtility;
-
 import java.io.*;
 import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
