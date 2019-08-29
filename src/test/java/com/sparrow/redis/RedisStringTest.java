@@ -24,7 +24,6 @@ import com.sparrow.container.Container;
 import com.sparrow.container.impl.SparrowContainer;
 import com.sparrow.exception.CacheConnectionException;
 import com.sparrow.protocol.ModuleSupport;
-import io.lettuce.core.cluster.RedisClusterClient;
 
 /**
  * @author by harry

@@ -19,7 +19,7 @@ public class IKParser {
     }
     public static void main(String[] args) {
         IKParser parser=new IKParser();
-        List<Lexeme> lexemes= parser.parseLexeme("我早上早餐喜欢吃康师傅方便面");
+        List<Lexeme> lexemes= parser.parseLexeme("美家");
         List<LexemeWithBoost> lexemeWithBoosts= parseLexemes(lexemes);
         for (LexemeWithBoost lexeme:lexemeWithBoosts){
             System.out.println(lexeme.toString());
