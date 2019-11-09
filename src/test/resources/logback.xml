@@ -86,7 +86,7 @@
         <file>d://sparrow-shell/logs/logs.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>d://sparrow-shell/logs/logs.%d{yyyy-MM-dd-HH-mm-ss}.%i.log</fileNamePattern>
-            <maxFileSize>100B</maxFileSize>
+            <maxFileSize>100MB</maxFileSize>
             <maxHistory>10</maxHistory>
             <totalSizeCap>10GB</totalSizeCap>
         </rollingPolicy>

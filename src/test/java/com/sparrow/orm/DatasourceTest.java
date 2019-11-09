@@ -41,8 +41,10 @@ public class DatasourceTest {
         System.err.println("datasource valid before "+dataSource);
         DataSourceValidChecker connectionValidChecker = new ConnectionValidCheckerAdapter();
         try {
-            connectionValidChecker.isValid(dataSource);
-            System.err.println("datasource valid after "+dataSource);
+            while (true) {
+                connectionValidChecker.isValid(dataSource);
+            }
+            //System.err.println("datasource valid after "+dataSource);
 
         } catch (Exception e) {
             e.printStackTrace();
