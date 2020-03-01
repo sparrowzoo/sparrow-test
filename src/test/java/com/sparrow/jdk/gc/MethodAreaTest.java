@@ -9,6 +9,6 @@ public class MethodAreaTest {
     public static void main(String[] args) throws InterruptedException {
         //byte[] a = new byte[1024 * 1024 * 500];
         System.out.println("welcome");
-        Thread.sleep(1000000L);
+        while (true);
     }
 }
