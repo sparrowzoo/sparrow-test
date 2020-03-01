@@ -26,7 +26,7 @@
 
     <bean name="redisPool" class="com.sparrow.cache.impl.redis.RedisPool">
         <property name="urls" value="${redis_url}"/>
-        <property name="poolConfig" ref="poolConfig"/>
+        <property name="config" ref="poolConfig"/>
     </bean>
 
 

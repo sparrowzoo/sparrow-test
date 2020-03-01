@@ -1,5 +1,7 @@
 package com.sparrow.jdk.volatilekey;
 
+import com.sparrow.tracer.Tracer;
+
 /**
  * Created by TCLDUSER on 2018/4/9.
  */
@@ -7,6 +9,7 @@ public class User {
     private int age = 10;
     private int no=100;
     private byte[] bytes;
+    private Tracer tracer;
     public User(int age){
         this.age=age;
     }
@@ -31,5 +34,11 @@ public class User {
         this.bytes = bytes;
     }
 
+    public Tracer getTracer() {
+        return tracer;
+    }
 
+    public void setTracer(Tracer tracer) {
+        this.tracer = tracer;
+    }
 }

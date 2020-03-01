@@ -1,6 +1,8 @@
 package com.sparrow.jdk.refer;
 
 import com.sparrow.jdk.volatilekey.User;
+import com.sparrow.tracer.Tracer;
+import com.sparrow.tracer.TracerBuilder;
 
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
@@ -17,7 +19,7 @@ public class TestWeakReference {
     public static void main(String[] args) {
         int i = 0;
         while (true) {
-            User u=user.get();
+            user.get();
             if (user.get() != null) {
                 i++;
                 System.out.println("Object is alive for " + i + " loops - ");
