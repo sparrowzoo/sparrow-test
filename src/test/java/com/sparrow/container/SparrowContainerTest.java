@@ -2,6 +2,7 @@ package com.sparrow.container;
 
 import com.sparrow.constant.SPARROW_ERROR;
 import com.sparrow.container.impl.SparrowContainer;
+import com.sparrow.protocol.ErrorSupport;
 import com.sparrow.support.Initializer;
 
 /**
@@ -14,6 +15,8 @@ public class SparrowContainerTest {
         Initializer initializer= container.getBean("initializer");
         System.out.println(initializer);
 
-        SPARROW_ERROR.ACTIVITY_RULE_GIFT_TIMES_OUT.name();
+       ErrorSupport errorSupport= SPARROW_ERROR.ACTIVITY_RULE_GIFT_TIMES_OUT;
+        System.out.println(errorSupport.module());
+        System.out.println(errorSupport.getCode());
     }
 }
