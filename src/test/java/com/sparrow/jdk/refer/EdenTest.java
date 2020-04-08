@@ -3,7 +3,7 @@ package com.sparrow.jdk.refer;
 import com.sparrow.jdk.volatilekey.User;
 
 import java.io.IOException;
-import java.lang.ref.SoftReference;
+import java.lang.ref.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,25 +16,25 @@ import java.util.List;
  * 2020-04-03T18:31:56.344+0800: [GC (Allocation Failure) 2020-04-03T18:31:56.344+0800: [ParNew: 17411K->17411K(18432K), 0.0000412 secs]2020-04-03T18:31:56.344+0800: [CMS: 40819K->40819K(40960K), 0.0055953 secs] 58230K->58230K(59392K), [Metaspace: 3315K->3315K(1056768K)], 0.0057484 secs] [Times: user=0.00 sys=0.00, real=0.01 secs]
  * 2020-04-03T18:31:56.350+0800: [Full GC (Allocation Failure) 2020-04-03T18:31:56.350+0800: [CMS: 40819K->880K(40960K), 0.0047811 secs] 58230K->880K(59392K), [Metaspace: 3315K->3315K(1056768K)], 0.0048825 secs] [Times: user=0.00 sys=0.00, real=0.01 secs]
  * 2end
+ * <p>
+ * jmap -heap 25412
+ * jstat -gc pid count
  */
-public class SoftWeakReference {
-
+public class EdenTest {
     public static void main(String[] args) throws IOException, InterruptedException {
-        SoftReference<List<User>> userListCache = new SoftReference<>(new ArrayList<User>());
-        int i = 0;
+        WeakReference<List<User>> weakReference = new WeakReference<>(new ArrayList<User>());
         while (true) {
-            int input = System.in.read();
-            if(input==(int)'\n'){
-                continue;
-            }
-            User user = new User(100, new byte[1024 * 1024]);
-            if (userListCache.get() != null) {
-                i++;
-                userListCache.get().add(user);
-                //System.out.println("YGC "+i);
+            //换成byte[]内存溢出
+            //todo 动态获取内存大小
+            User u = new User(100, new byte[1024 * 1024]);
+            List<User> users = weakReference.get();
+            if (users != null) {
+                users.add(u);
+                Thread.sleep(100);
             } else {
-                userListCache = new SoftReference<>(new ArrayList<User>());
-                System.out.println("end");
+                int c = System.in.read();
+                System.out.println((char) c);
+                weakReference = new WeakReference<>(new ArrayList<User>());
             }
         }
     }
