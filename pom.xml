@@ -30,7 +30,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <spring.framework.version>4.2.6.RELEASE</spring.framework.version>
+        <spring.framework.version>5.2.7.RELEASE</spring.framework.version>
     </properties>
 
     <dependencies>
