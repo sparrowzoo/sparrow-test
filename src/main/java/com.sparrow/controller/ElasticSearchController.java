@@ -2,7 +2,7 @@ package com.sparrow.controller;
 
 import com.sparrow.mvc.RequestParameters;
 import com.sparrow.utility.HttpClient;
-import com.sparrow.utility.StringUtility;
+import com.sparrow.utility.QueryStringParser;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class ElasticSearchController {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("analyzer", analyzer);
         parameters.put("text", text);
-        String analyzeUrl = ES_ROOT + "_analyze?" + StringUtility.serialParameters(parameters);
+        String analyzeUrl = ES_ROOT + "_analyze?" + QueryStringParser.serial(parameters);
         String json = HttpClient.get(analyzeUrl);
         try {
             response.getWriter().write(json);
@@ -44,7 +44,7 @@ public class ElasticSearchController {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("tokenizer", tokenizer);
         parameters.put("text", text);
-        String analyzeUrl = ES_ROOT + "_analyze?" + StringUtility.serialParameters(parameters);
+        String analyzeUrl = ES_ROOT + "_analyze?" + QueryStringParser.serial(parameters);
         String json = HttpClient.get(analyzeUrl);
         try {
             response.getWriter().write(json);
