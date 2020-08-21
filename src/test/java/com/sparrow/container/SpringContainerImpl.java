@@ -14,7 +14,7 @@ import java.util.Map;
  * Created by harry on 2018/2/9.
  * 这里是示例demo具体代码业务端可以实现
  */
-public class SparingContainerImpl implements Container {
+public class SpringContainerImpl implements Container {
     private ApplicationContext applicationContext;
 
     @Override public FactoryBean getSingletonRegister() {
