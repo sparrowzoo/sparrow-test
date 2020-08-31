@@ -4,14 +4,17 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 
+/**
+ * -Djava.util.Arrays.useLegacyMergeSort=true
+ */
 public class DictionaryTest {
     public static void main(String[] args) {
         //exception
         int[] array = new int[]{1, 2, 3, 2, 2, 3, 2, 3, 2, 2, 3, 2, 3, 3, 2, 2, 2, 2, 2, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
-        //array = new int[]{2, 3, 2, 2, 3, 2, 3, 2, 2, 3, 2, 3, 3, 2, 2, 2, 2, 2, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        //        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+        array = new int[]{2, 3, 2, 2, 3, 2, 3, 2, 2, 3, 2, 3, 3, 2, 2, 2, 2, 2, 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
         List<DictionaryEntry> list = new ArrayList<>();
         Set<DictionaryEntry> set = new TreeSet<>();
@@ -22,9 +25,13 @@ public class DictionaryTest {
             list.add(entry);
             set.add(entry);
         }
-        System.out.println(set.size());
-        Collections.sort(list);
-        System.out.println(list.size());
+        long current = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+            //System.out.println(set.size());
+            Collections.sort(list);
+            //System.out.println(list.size());
+        }
+        System.out.println(System.currentTimeMillis() - current);
     }
 
     public static class DictionaryEntry implements Comparable<DictionaryEntry> {

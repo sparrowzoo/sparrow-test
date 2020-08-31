@@ -16,6 +16,7 @@
  */
 package com.sparrow.facade.utility;
 
+import com.sparrow.support.file.FileNameProperty;
 import com.sparrow.utility.FileUtility;
 import org.junit.Test;
 
@@ -24,12 +25,21 @@ import org.junit.Test;
  */
 public class FileTest {
     @Test
-    public void fileExistInFile(){
-        String fileName="/lines_demo.properties";
-        String line="test5";
-        FileUtility fileUtility=FileUtility.getInstance();
+    public void fileExistInFile() {
+        String fileName = "/lines_demo.properties";
+        String line = "test5";
+        FileUtility fileUtility = FileUtility.getInstance();
         while (true) {
             System.out.println(fileUtility.existLine(fileName, line));
         }
+    }
+
+    @Test
+    public void fileName() {
+        FileNameProperty fileNameProperty = FileUtility.getInstance().getFileNameProperty("http://www.baidu.com/a/b/c.jpg");
+        fileNameProperty = FileUtility.getInstance().getFileNameProperty("d:\\a\\b\\c\\c.jsp");
+
+        System.out.println(fileNameProperty.getExtensionWithoutDot());
+        System.out.println(fileNameProperty);
     }
 }

@@ -18,6 +18,7 @@
 package com.sparrow.facade.utility;
 
 import com.sparrow.cryptogram.MessageSignature;
+import com.sparrow.utility.QueryStringParser;
 import com.sparrow.utility.StringUtility;
 
 import java.util.Map;
@@ -44,7 +45,7 @@ public class SignTester {
         parameters.put("trade_type", "NATIVE");
         parameters.put("product_id", "1");
         parameters.put("out_trade_no", "JNL-93-1-20160125133108");
-        String pairParameters = StringUtility.serialParameters(parameters, false);
+        String pairParameters =QueryStringParser.serial(parameters, false);
         String sign = getSignature("appid=wxa3847feeb20c8d59&body=智利百内国家公园W线徒步之旅&detail=" +
             "智利百内国家公园W线徒步之旅&device_info=WEB&mch_id=1246154201&nonce_str=dweivsgo" +
             "e9r31f9v0lpf6e3jkn3t5dmp&notify_url=http://in-www.joinaturelife.com/wechat/notif" +

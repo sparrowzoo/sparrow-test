@@ -20,6 +20,7 @@ package com.sparrow.facade.date;
 import com.sparrow.constant.DATE_TIME;
 import com.sparrow.enums.DATE_TIME_UNIT;
 import com.sparrow.utility.DateTimeUtility;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -28,7 +29,6 @@ import java.util.Calendar;
  * Created by harry on 2018/1/23.
  */
 public class DateTimeUtilityTest {
-
 
 
     @Test
@@ -78,11 +78,11 @@ public class DateTimeUtilityTest {
 
 
     @Test
-    public void expireRounding(){
-        Long t=1555298987703L;
-        System.out.println(DateTimeUtility.roundingExpire(t,1000*60L*60L));
-        t+=1000*60L*30L;
-        System.out.println(DateTimeUtility.roundingExpire(t,1000*60L*60L));
+    public void expireRounding() {
+        Long t = 1555298987703L;
+        System.out.println(DateTimeUtility.roundingExpire(t, 1000 * 60L * 60L));
+        t += 1000 * 60L * 30L;
+        System.out.println(DateTimeUtility.roundingExpire(t, 1000 * 60L * 60L));
     }
 
     @Test
@@ -90,5 +90,23 @@ public class DateTimeUtilityTest {
 //        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(61L,3,0));
 //        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(3600 * 24 * 3670*100L + 3600 * 23 + 60 * 30 + 59L));
 //        System.out.println(DateTimeUtility.getBeforeFormatTimeBySecond(3600 +120+ 59L,3,0));
+    }
+
+    @Test
+    public void testSparrowFormat() {
+        long t = System.currentTimeMillis();
+        for (int i = 0; i < 5; i++) {
+            DateFormatUtils.format(System.currentTimeMillis(), "yyyyMMdd");
+        }
+        System.out.println(System.currentTimeMillis() - t);
+    }
+
+    @Test
+    public void testCommonFormat() {
+        long t = System.currentTimeMillis();
+        for (int i = 0; i < 5; i++) {
+            DateTimeUtility.getFormatTime(System.currentTimeMillis(), "yyyyMMdd");
+        }
+        System.out.println(System.currentTimeMillis() - t);
     }
 }

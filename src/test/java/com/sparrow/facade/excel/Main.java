@@ -78,7 +78,7 @@ public class Main {
 
     public static Workbook getWorkbook(InputStream fin, String fileName) throws IOException {
         Workbook workbook = null;
-        String extension = FileUtility.getInstance().getExtension(fileName);
+        String extension = FileUtility.getInstance().getFileNameProperty(fileName).getExtension();
         if (".xls".equals(extension)) {
             workbook = new HSSFWorkbook(fin);
         } else if (".xlsx".equals(extension)) {
