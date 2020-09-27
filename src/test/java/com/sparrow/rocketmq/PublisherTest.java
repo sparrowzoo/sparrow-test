@@ -18,7 +18,7 @@
 package com.sparrow.rocketmq;
 
 import com.sparrow.constant.cache.KEY;
-import com.sparrow.constant.cache.key.KEY_FORUM;
+import com.sparrow.constant.cache.key.KEY_RESOURCE;
 import com.sparrow.container.Container;
 import com.sparrow.container.impl.SparrowContainer;
 import com.sparrow.mq.MQPublisher;
@@ -30,7 +30,7 @@ import com.sparrow.support.latch.DistributedCountDownLatch;
  */
 public class PublisherTest {
     public static void main(String[] args) {
-        KEY productKey = new KEY.Builder().business(KEY_FORUM.ID_CODE_PAIR).businessId(2).build();
+        KEY productKey = new KEY.Builder().business(KEY_RESOURCE.ID_CODE_PAIR).businessId(2).build();
         Container container = new SparrowContainer();
         container.setContextConfigLocation("/sparrow_rocketmq_producer.xml");
         container.init();

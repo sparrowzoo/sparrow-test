@@ -53,7 +53,7 @@ public class NIOServer {
      */
     @SuppressWarnings("unchecked")
     public void listen() throws IOException {
-        System.out.println("服务端启动成功！" + System.nanoTime());
+        System.out.println("服务端启动成功！" + System.nanoTime()+"-thread-id:"+Thread.currentThread().getId());
         // 轮询访问selector
         while (true) {
             //当注册的事件到达时，方法返回；否则,该方法会一直阻塞

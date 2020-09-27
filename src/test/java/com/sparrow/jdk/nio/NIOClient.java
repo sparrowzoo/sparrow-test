@@ -14,6 +14,7 @@ import java.util.Iterator;
  * @author 小路
  */
 public class NIOClient {
+
     //通道管理器
     private Selector selector;
 
@@ -128,5 +129,9 @@ public class NIOClient {
         NIOClient client = new NIOClient();
         client.initClient("localhost", 8000);
         client.listen();
+
+        NIOClient client2 = new NIOClient();
+        client2.initClient("localhost", 8000);
+        client2.listen();
     }
 }
