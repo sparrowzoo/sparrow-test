@@ -1,16 +1,13 @@
 package com.sparrow.limit;
 
 import com.google.common.util.concurrent.RateLimiter;
+import java.util.concurrent.TimeUnit;
 
 public class LimitTest2 {
-    public static void main(String[] args) throws InterruptedException {
-        RateLimiter rateLimiter = RateLimiter.create(0.01);
+    public static void main(String[] args) {
+        RateLimiter rateLimiter = RateLimiter.create(1,5,TimeUnit.SECONDS);
+        System.out.println(rateLimiter.getRate());
         while (true) {
-            System.out.println("get token "+ rateLimiter.acquire()+"s");
-            Thread.sleep(5000L);
-            System.out.println("get token "+ rateLimiter.acquire()+"s");
-            System.out.println("get token "+ rateLimiter.acquire()+"s");
-            System.out.println("get token "+ rateLimiter.acquire()+"s");
             System.out.println("get token "+ rateLimiter.acquire()+"s");
         }
     }

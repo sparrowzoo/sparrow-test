@@ -116,7 +116,7 @@ public class NIOClient {
             e.printStackTrace();
         }
         //事件只注册一次即可
-        //channel.register(this.selector, SelectionKey.OP_READ);
+        channel.register(this.selector, SelectionKey.OP_READ);
         System.out.println("client receive message：" + stringBuffer + System.nanoTime());
     }
 
