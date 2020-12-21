@@ -1,12 +1,13 @@
 package com.sparrow.arithmetic;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class PriorityQueueTopKDemo {
+public class PriorityQueueDescTopKDemo {
     //找出前k个最大数，采用小顶堆实现
     public static int[] findKMax(int[] nums, int k) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>(k, Integer::compareTo);
+        PriorityQueue<Integer> pq = new PriorityQueue<>(k);
         //队列默认自然顺序排列，小顶堆，不必重写compare
         for (int num : nums) {
             if (pq.size() < k) {
@@ -30,7 +31,7 @@ public class PriorityQueueTopKDemo {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 6, 2, 3, 5, 4, 8, 7, 9, 10, 0, 1, 3, 2, 1};
+        int[] arr = new int[]{1, 2, 3, 4, 5, 6, 1};
         System.out.println(Arrays.toString(findKMax(arr, 5)));
     }
 }
